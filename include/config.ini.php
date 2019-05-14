@@ -7,7 +7,7 @@ $_CFG['host'] = 'sql211.byethost14.com';
 $_CFG['db'] = 'b14_20045506_camp2';
 $_CFG['user'] = 'b14_20045506';
 $_CFG['passwd'] = 'camp168ing777';
-$_CFG['char'] = 'utf8';
+$_CFG['char'] = 'utf8';//
 
 /*
 $_CFG= array();
