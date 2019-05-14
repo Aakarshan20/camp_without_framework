@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>歡迎光臨露營區查詢系統</title>
+<script language="JavaScript" type="text/JavaScript">
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function recheckaid(aid){　 
+
+if ( confirm ("確定刪除此筆資料? ") )
+     {　document.location.href="delAreaAct.php?aid=" + aid}
+}
+</script>
+</head>
+	
+<body>
+<!-- //banner -->
+<!-- banner-bottom -->
+	<div class="banner-bottom">
+		<div class="container">
+			
+			<div class="banner-bottom-grids">
+			
+				
+				<div class="contact">
+				<div class="col-md-3 banner-bottom-grid">	
+					<div class="container">
+						<h2>新增訂位資料</h2>
+						<div class="contact-us1-bottom">
+							
+							<script>
+							function node(name, child){
+								this.name=name;
+								this.child=child;
+							}
+
+							function dataHierarchy(){
+								// 第一年
+								var year1=new Array();
+								var i=0;
+								
+								for(j=1;j<=12;j++){
+									
+									if(j==2){
+										var monthLengh = 28;
+										var days = Array();
+										
+										for(k=0;k<monthLengh;k++){
+											days[k] = k+1;
+										}
+										year1[i++]=new node(j, days);
+									}else if((j==4)||(j==6)||(j==9)||(j==11)){
+										var monthLengh = 30;
+										var days = Array();
+										
+										for(k=0;k<monthLengh;k++){
+											days[k] = k+1;
+										}
+										year1[i++]=new node(j, days);
+									}else{
+										var monthLengh = 31;
+										var days = Array();
+										
+										for(k=0;k<monthLengh;k++){
+											days[k] = k+1;
+										}
+										year1[i++]=new node(j, days);
+									
+									}
+									
+								}
+								
+								
+								// 第二年
+								var year2=new Array();
+								var i=0;
+								
+								for(j=1;j<=12;j++){
+									
+									if(j==2){
+										var monthLengh = 28;
+										var days = Array();
+										
+										for(k=0;k<monthLengh;k++){
+											days[k] = k+1;
+										}
+										year2[i++]=new node(j, days);
+									}else if((j==4)||(j==6)||(j==9)||(j==11)){
+										var monthLengh = 30;
+										var days = Array();
+										
+										for(k=0;k<monthLengh;k++){
+											days[k] = k+1;
+										}
+										year2[i++]=new node(j, days);
+									}else{
+										var monthLengh = 31;
+										var days = Array();
+										
+										for(k=0;k<monthLengh;k++){
+											days[k] = k+1;
+										}
+										year2[i++]=new node(j, days);
+									
+									}
+									
+								}
+								
+								var output=new Array();
+								var i=0;
+								output[i++]=new node(2016, year1);
+								
+								output[i++]=new node(2017, year2);
+								return(output);
+							}
+							dataTree=dataHierarchy();
+
+							// 第三個欄位被更動後的反應動作
+							function onChangeColumn3(){
+								updatePath();
+							}
+
+							// 第二個欄位被更動後的反應動作
+							function onChangeColumn2(){
+								form=document.order;
+								index1=form.year.selectedIndex;
+								index2=form.month.selectedIndex;
+								index3=form.day.selectedIndex;
+								// Create options for column 3
+								for (i=0;i<dataTree[index1].child[index2].child.length;i++)
+									form.day.options[i]=new Option(dataTree[index1].child[index2].child[i], dataTree[index1].child[index2].child[i]);
+								form.day.options.length=dataTree[index1].child[index2].child.length;
+								updatePath();
+							}
+
+							// 第一個欄位被更動後的反應動作
+							function onchangeColumn1() {
+								form=document.order;
+								index1=form.year.selectedIndex;
+								index2=form.month.selectedIndex;
+								index3=form.day.selectedIndex;
+								// Create options for column 2
+								for (i=0;i<dataTree[index1].child.length;i++)
+									form.month.options[i]=new Option(dataTree[index1].child[i].name, dataTree[index1].child[i].name);
+								form.month.options.length=dataTree[index1].child.length;
+								// Clear column 3
+								form.day.options.length=0;
+								updatePath();
+							}
+
+							// 修改所顯示的路徑
+							function updatePath(){
+								form=document.order;
+								index1=form.year.selectedIndex;
+								index2=form.month.selectedIndex;
+								index3=form.day.selectedIndex;
+								if ((index1>=0) && (index2>=0) && (index3>=0)) {
+									text1=form.year.options[index1].text;
+									text2=form.month.options[index2].text;
+									text3=form.day.options[index3].text;
+									form.path.value=text1+" ==> "+text2+" ==> "+text3;
+								} else
+									form.path.value="";
+							}
+							</script>
+							<form name="order" action="orderAct.php" method="post">
+								<h4>預約年份:&nbsp;
+								<select name="year" style="width:119px;font-size:14px;" onChange="onChangeColumn1();">
+									<option value="<?php echo $year?>"><?php echo $year?></option>
+									<option value="<?php echo ($year+1)?>"><?php echo ($year+1)?></option>
+									<!-- <option value="<?php echo ($year+2)?>"><?php echo ($year+2)?></option> -->
+								</select>
+								</h4>
+								<br/>
+								<h4>預約月份:&nbsp;
+								<select name="month" style="width:119px;font-size:14px;" onChange="onChangeColumn2();">
+									<<?php 
+									for($i=1;$i<=12;$i++){ ?>
+									<option value="<?php echo $i?>"><?php echo $i?></option>
+									<?php } ?>
+								</select>
+								</h4>
+								<br/>
+								<h4>預約日期:&nbsp;
+								<select name="day" style="width:119px;font-size:14px;" onChange="onChangeColumn3();">
+									<?php 
+									for($i=1;$i<=31;$i++){ ?>
+									<option value="<?php echo $i?>"><?php echo $i?></option>
+									<?php } ?>
+								</select>
+								</h4>
+								<br/>
+				<script language=javascript>
+				changelist();
+				function changelist()
+				{
+					  switch(document.order.aid.value)
+					  {		
+							<?php foreach($areas as $v){ ?>
+								case "<?php echo $v['aid']?>":
+								document.all.namelist.innerHTML="預定數量:&nbsp;&nbsp;<select name=booked style=\"width:119px;font-size:14px;\">"+
+								
+								<?php 	
+									$value='"';
+									for($i=1;$i<=$v['available'];$i++){
+										$value.='<option value='.$i.'>'.$i;
+									}
+									$value.='"';
+										echo $value;
+								?>
+								
+								+"</select>"
+								break;
+							<?php } ?>
+					  }
+				}                                                                                
+				</script>    
+								<h4>預約區域:&nbsp;
+								
+								<select name="aid" style="width:119px;font-size:14px;" 
+									onChange=Javascript:changelist();>
+									<option value="0"selected>請選擇區域</option>
+									<?php foreach($areas as $v){ ?>
+									<option value="<?php echo $v['aid']?>"><?php echo $v['name']?></option>
+									<?php } ?>
+								</select>
+								<br/>
+								<br/>
+								<div id=namelist>預定數量:&nbsp;</div>
+
+								</h4>
+								
+								
+								<br/>
+								<input type="submit" value="送出" >
+							</form>
+							
+
+			
+							
+							<div class="clearfix"> </div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="col-md-3 banner-bottom-grid">
+					<div class="container">
+					
+					
+					<table border="solid" style="border-color:black" >
+					<h2>編輯露營區資料</h2>
+					
+					<br/>
+					<tr>
+							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">序號</th>
+							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">名稱</th>
+							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">數量</th>
+							<th colspan="6"  style="padding:5px;vertical-align:middle;color:black">選項</th>
+							
+						</tr>
+						<?php foreach($areas as $k =>$v){ ?>
+						<tr>
+							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black"><?php echo ($k+1)?></th>
+							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">
+								<?php mb_internal_encoding("UTF-8");
+									$addition = (mb_strlen($v['name'], "utf-8")>10)?"...":" ";
+									echo (mb_strlen($v['name'], "utf-8")<7)?$v['name']:mb_substr($v['name'], 0,5)."<br/>".mb_substr($v['name'], 5,5).$addition;
+								?>
+							</th>
+							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black"><?php echo $v['available']?></th>
+							<th colspan="6"  style="padding:5px;vertical-align:middle;color:black">
+							<a href="editor.php?aid=<?php echo $v['aid']?>" >編輯</a>
+							</th>
+							
+						</tr>
+						<?php } ?>
+						
+						
+					
+					</table>
+					
+					
+					
+					</div>
+				</div>
+				<div class="col-md-3 banner-bottom-grid">
+					<div class="container">
+					<h2>新增露營區資料</h2>
+					<div class="contact-us1-bottom">
+					
+					<form action="insertAreaAct.php" method="post">
+						<p><h4>名稱:&nbsp;</h4></p>
+						<br/>
+						<p><input type = "text" name="name" style="width: 200px;" /></p>
+						<br/>
+						<p><h4>數量:&nbsp;</h4></p>
+						<br/>
+						<p><input type = "text" name="available"  style="width: 200px;"/></h4></p>
+						<br/>
+						<input type="submit" value="送出" >
+					</form>
+					</div>
+					</div>
+				</div>
+				<div class="col-md-3 banner-bottom-grid">
+					<div class="container">
+					
+					
+					<table border="solid" style="border-color:black" >
+					<h2><font style="color:red">刪除</font>露營區資料</h2>
+					<br/>
+					<tr>
+							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">序號</th>
+							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">名稱</th>
+							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">數量</th>
+							<th colspan="6"  style="padding:5px;vertical-align:middle;color:black">選項</th>
+							
+						</tr>
+						<?php foreach($areas as $k =>$v){ ?>
+						<tr>
+							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black"><?php echo ($k+1)?></th>
+							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">
+								<?php mb_internal_encoding("UTF-8");
+									$addition = (mb_strlen($v['name'], "utf-8")>10)?"...":" ";
+									echo (mb_strlen($v['name'], "utf-8")<7)?$v['name']:mb_substr($v['name'], 0,5)."<br/>".mb_substr($v['name'], 5,5).$addition;
+								?>
+							</th>
+							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black"><?php echo $v['available']?></th>
+							<th colspan="6"  style="padding:5px;vertical-align:middle;color:black">
+							<a href="#" title="開新視窗" onclick="recheckaid(<?php echo $v['aid']?>)" >刪除</a>
+							</th>
+							
+						</tr>
+						<?php } ?>
+						
+						
+					
+					</table>
+					</div>
+				</div>
+				</div>
+				
+				
+				<?php /*?>
+				
+					<img src="./view/images/2.jpg" alt=" " class="img-responsive" />
+					<div class="banner-bottom-grid-info">
+						<div class="col-xs-4 banner-bottom-grid-infol">
+							<p>.02</p>
+						</div>
+						<div class="col-xs-8 banner-bottom-grid-infor">
+							<h3>qui dolorem fugiat</h3>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="vel">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse 
+								quam nihil molestiae consequatur.</p>
+							<div class="more m1">
+								<a href="single.html">Learn More</a>
+							</div>
+					
+				</div>
+				<div class="col-md-3 banner-bottom-grid">
+					<img src="./view/images/3.jpg" alt=" " class="img-responsive" />
+					<div class="banner-bottom-grid-info">
+						<div class="col-xs-4 banner-bottom-grid-infol">
+							<p>.03</p>
+						</div>
+						<div class="col-xs-8 banner-bottom-grid-infor">
+							<h3>qui dolorem fugiat</h3>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="vel">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse 
+								quam nihil molestiae consequatur.</p>
+							<div class="more m1">
+								<a href="single.html">Learn More</a>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-3 banner-bottom-grid">
+					<img src="./view/images/4.jpg" alt=" " class="img-responsive" />
+					<div class="banner-bottom-grid-info">
+						<div class="col-xs-4 banner-bottom-grid-infol">
+							<p>.04</p>
+						</div>
+						<div class="col-xs-8 banner-bottom-grid-infor">
+							<h3>qui dolorem fugiat</h3>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="vel">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse 
+								quam nihil molestiae consequatur.</p>
+							<div class="more m1">
+								<a href="single.html">Learn More</a>
+							</div>
+					</div>
+				</div>
+				<?php  */?>
+				<div class="clearfix"> </div>
+			</div>
+			
+
+			
+		</div>
+	</div>
+<!-- //banner-bottom -->
+<!-- banner-bottom-video -->
+<?php /* ?>
+	<div class="banner-bottom-video">
+		<div class="container">
+			<div class="banner-bottom-video-grids">
+				<div class="banner-bottom-video-grid-left">
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+						  <h4 class="panel-title">
+							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							  assumenda est
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+						  <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTwo">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							  Itaque earum rerum
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingThree">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							  autem quibusdam
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFour">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+							  excepturi sint
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					   <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFive">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+							  voluptatum deleniti
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					   <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingSix">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+							  autem quibusdam
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingSeven">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+							  excepturi sint
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingEight">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+							  excepturi sint
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					</div>
+				</div>
+                <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >手机网站模板</a></div>
+				<div class="banner-bottom-video-grid-right">
+					<h4>Offering a wide range of services</h4>
+					<div class="banner-bottom-video-grid-rgt">
+						<img src="./view/images/2.jpg" alt=" " class="img-responsive" />
+						<div class="caption">
+							<h3>Temporibus autem quibusdam</h3>
+							<p>At vero eos et accusamus et iusto odio dignissimos ducimus 
+								qui blanditiis praesentium voluptatum deleniti atque corrupti 
+								quos dolores.</p>
+							<div class="more m1">
+								<a href="single.html">Learn More</a>
+							</div>
+						</div>
+					</div>
+					<div class="banner-bottom-video-grid-rgt">
+						<ul>
+							<li><a href="#">procure him some great pleasure</a></li>
+							<li><a href="#">voluptas assumenda est, omnis</a></li>
+							<li><a href="#">voluptatum deleniti atque corrupti</a></li>
+							<li><a href="#">blanditiis praesentium voluptatum</a></li>
+							<li><a href="#">accusamus et iusto odio</a></li>
+							<li><a href="#">qui blanditiis praesentium</a></li>
+							<li><a href="#">voluptatum deleniti atque corrupti</a></li>
+							<li><a href="#">blanditiis praesentium voluptatum</a></li>
+							<li><a href="#">accusamus et iusto odio</a></li>
+							<li><a href="#">accusamus et iusto odio</a></li>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<?php */ ?>
+<!-- //banner-bottom-video -->
+<!-- banner-slider -->
+<?php /* ?>
+	<div class="banner-slider">
+		<div class="container">
+			<div class="banner-slider-grids">
+				<div class="col-md-6 banner-slider-grid">
+					<h2>velit esse quam nihil molestiae consequatur, vel illum qui 
+						dolorem</h2>
+				</div>
+				<div class="col-md-6 banner-slider-grid">
+					<div class="banner-slider-grd">
+						<h3>quam nihil molestiae consequatur</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation 
+						ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						Velit esse quam nihil molestiae consequatur, vel illum qui dolorem.</p>
+					</div>
+					<div class="banner-slider-grd">
+						<h3>quam nihil molestiae consequatur</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation 
+						ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						Velit esse quam nihil molestiae consequatur, vel illum qui dolorem.</p>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<?php */ ?>
+<!-- //banner-slider -->
+<!-- testimonials -->
+	<?php /* ?>
+	<div class="testimonials">
+		<div class="container">
+			<h3>Testimonials</h3>
+			<div class="testimonials-grids">
+				<ul id="flexiselDemo1">			
+					<li>
+						<div class="testimonials-grid">
+							<div class="col-xs-5 testimonials-grid-left">
+								<img src="./view/images/6.jpg" alt=" " class="img-responsive" />
+							</div>
+							<div class="col-xs-7 testimonials-grid-right">
+								<div class="rating">
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+								</div>
+								<p>Itaque earum rerum hic tenetur a sapiente delectus rerum hic tenetur.<span>Andrew Williums</span></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</li>
+					<li>
+						<div class="testimonials-grid">
+							<div class="col-xs-5 testimonials-grid-left">
+								<img src="./view/images/7.jpg" alt=" " class="img-responsive" />
+							</div>
+							<div class="col-xs-7 testimonials-grid-right">
+								<div class="rating">
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+								</div>
+								<p>Itaque earum rerum hic tenetur a sapiente delectus rerum hic tenetur.<span>James</span></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</li>
+					<li>
+						<div class="testimonials-grid">
+							<div class="col-xs-5 testimonials-grid-left">
+								<img src="./view/images/8.jpg" alt=" " class="img-responsive" />
+							</div>
+							<div class="col-xs-7 testimonials-grid-right">
+								<div class="rating">
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+								</div>
+								<p>Itaque earum rerum hic tenetur a sapiente delectus rerum hic tenetur.<span>Micheal France</span></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</li>
+				</ul>
+					<script type="text/javascript">
+							$(window).load(function() {
+								$("#flexiselDemo1").flexisel({
+									visibleItems: 3,
+									animationSpeed: 1000,
+									autoPlay: true,
+									autoPlaySpeed: 3000,    		
+									pauseOnHover: true,
+									enableResponsiveBreakpoints: true,
+									responsiveBreakpoints: { 
+										portrait: { 
+											changePoint:480,
+											visibleItems: 1
+										}, 
+										landscape: { 
+											changePoint:640,
+											visibleItems:2
+										},
+										tablet: { 
+											changePoint:768,
+											visibleItems: 2
+										}
+									}
+								});
+								
+							});
+					</script>
+					<script type="text/javascript" src="./view/js/jquery.flexisel.js"></script>
+			</div>
+		</div>
+	</div>
+	<?php */ ?>
+<!-- //testimonials -->
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+
+<html>
+<head>
+<title>歡迎光臨逸視界露營區查詢系統</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="KeyWords" content="逸視界露營區"/>
+<meta name="Description" content="逸視界露營區 訂位查詢"/>
+<meta name="keywords" content="Residence Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="./view/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="./view/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="./view/js/jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+</head>
+	
+<body>
+<!-- banner -->
+	<div class="banner1" style="background-color: rgb(51, 51, 51);background-image:url( '<?php echo $area_banners[$pid]?>' )";>
+	<!-- <div class="banner1" style="background-color: rgb(51, 51, 51);background-image:url( './view/a_banner.jpg' )";> -->
+		<div class="container">
+			<!-- <div class="header-nav">  -->
+				<nav class="navbar navbar-default">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					  </button>
+						<div class="logo">
+							<a class="navbar-brand" href="index.php" >歡迎光臨<span style="color:white;text-shadow:0.5px 0.5px 1px #434a54">逸視界露營區查詢系統</span></a>
+						</div>
+					</div>
+					<style>
+					.navbar-brand:nth-child(1) {
+						text-shadow: 2px 2px #434a54;
+						
+					}
+					.nav navbar-nav:nth-child(1) {
+						text-shadow: 2px 2px #434a54;
+						
+					}
+					</style>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li><a style="color:white;text-shadow:1px 1px  1px #434a54"href="index.php">回首頁</a></li>
+							<?php foreach($areas as $k =>$v){ 
+										if($k<count($area_covers)){?>
+											<li><a style="color:white;text-shadow:1px 1px  1px #434a54"href="gallery.php?p=<?php echo $k?>"><?php echo $v['name']?>相簿</a></li>
+									<?php	}	
+								
+							 } ?>
+						</ul>
+						<?php /*?>
+						<div class="search">
+							<form>
+								<i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" value="Search Here..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Here...';}" required>
+							</form>
+						</div>
+						<?php  */?>
+					</div><!-- /.navbar-collapse -->	
+				<!-- </nav> -->
+			<!-- </div> -->
+			<div class="banner-info">
+				
+				
+				<!-- <div class="more m1">-->
+					<!-- <a href="single.php">Learn More</a> -->
+				<!-- </div> -->
+			</div>
+		<!-- </div> -->
+	</div>
+	</div>
+</body>
+</html>

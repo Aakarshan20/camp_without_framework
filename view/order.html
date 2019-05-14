@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>歡迎光臨露營區查詢系統</title>
+
+</head>
+	
+<body>
+<!-- //banner -->
+	<p><font color="white">.</font></p>
+	<div class="banner-bottom-video">
+		<div class="container">
+			<div class="banner-bottom-video-grids">
+				<a name = "album"></a>
+				
+				<?php include('leftmenu.html');?>
+                
+				<div class="banner-bottom-video-grid-right">
+					<div style="padding-top:10px;padding-bottom:10px;padding-right:10px">
+						<h4>●收費標準</h4>
+					</div>
+					
+					</style>
+					<div class="banner-bottom-video-grid-rgt">
+						<table style="border:3px #cccccc solid;width:100%" cellpadding="10" border='1'>
+
+						<tr>
+							<td style="padding:5px;text-align:center;;width:50%;text-align:center;background:#7FFFD4;">地區</td>
+							<td style="padding:5px;text-align:center;;width:50%;text-align:center;background:#7FFFD4;">價格</td>
+						</tr>
+						<tr>
+							<td style="padding:5px;text-align:center;">A區</td>
+							<td style="padding:5px;text-align:center;">900</td>
+						</tr>
+						<tr>
+							<td style="padding:5px;text-align:center;">B區</td>
+							<td style="padding:5px;text-align:center;">900</td>
+						</tr>
+						<tr>
+							<td style="padding:5px;text-align:center;">C區</td>
+							<td style="padding:5px;text-align:center;">900</td>
+						</tr>
+						<tr>
+							<td style="padding:5px;text-align:center;">D區</td>
+							<td style="padding:5px;text-align:center;">1000</td>
+						</tr>
+						<tr>
+							<td style="padding:5px;text-align:center;">逸安一區</td>
+							<td style="padding:5px;text-align:center;">900</td>
+						</tr>
+						<tr>
+							<td style="padding:5px;text-align:center;">逸安二區</td>
+							<td style="padding:5px;text-align:center;">900</td>
+						</tr>
+						<tr>
+							<td style="padding:5px;text-align:center;">逸安三區</td>
+							<td style="padding:5px;text-align:center;">900</td>
+						</tr>
+						<tr>
+							<td style="padding:5px;text-align:center;">逸安大區</td>
+							<td style="padding:5px;text-align:center;">1000</td>
+						</tr>
+					
+						</table>
+						
+						<div style="margin-top:20px;margin-bottom:20px;">
+							<h4>●立即訂位</h4>
+							<p>說明：目前開放假日(紅字)訂位，點一次月曆選擇日期，再點一次取消選取。</p>
+						</div>
+						<script>
+						
+						function getXmlHttpObject(){
+								var xmlHttpRequest;
+							try{
+								xmlHttpRequest = new XMLHttpRequest();
+							}catch(e){
+								try{
+									xmlHttpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+								}catch(e){
+									xmlHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+								}
+							}
+							return xmlHttpRequest;
+						}
+						
+						var myXmlHttpRequest="";
+						
+						function getValue2(btn){
+							$("leave").innerHTML = "";
+							myXmlHttpRequest = getXmlHttpObject();
+							if(myXmlHttpRequest){
+								var url = "./ajax_back2.php?m=" + btn.name;
+								myXmlHttpRequest.open("get",url,true);
+								
+								myXmlHttpRequest.onreadystatechange = proc2;
+								myXmlHttpRequest.send(null);
+								
+							}else{
+								alert("創建失敗");
+							}
+						}
+						
+						
+						function getValue(btn){
+							$("arrive").innerHTML = "";
+							myXmlHttpRequest = getXmlHttpObject();
+							if(myXmlHttpRequest){
+								var url = "./ajax_back.php?m=" + btn.name;
+								myXmlHttpRequest.open("get",url,true);
+								
+								myXmlHttpRequest.onreadystatechange = proc;
+								myXmlHttpRequest.send(null);
+								
+							}else{
+								alert("創建失敗");
+							}
+						}
+						
+						function proc(){
+							console.log(123);
+							if(myXmlHttpRequest.readyState==4){
+								if(myXmlHttpRequest.status==200){
+									$("calender").innerHTML = myXmlHttpRequest.responseText;
+									console.log(myXmlHttpRequest.responseText);
+								}else{
+									console.log("not 200");
+								}
+							}else{
+								console.log("not 4");
+							}
+
+						}
+						function proc2(){
+							console.log(456);
+							if(myXmlHttpRequest.readyState==4){
+								if(myXmlHttpRequest.status==200){
+									$("calender_leave").innerHTML = myXmlHttpRequest.responseText;
+									console.log(myXmlHttpRequest.responseText);
+								}else{
+									console.log("not 200");
+								}
+							}else{
+								console.log("not 4");
+							}
+
+						}
+						
+					
+						
+						function $(id){
+							return document.getElementById(id);
+						}
+					</script>
+					
+					<div id="calender">
+					
+					<table style="border:3px #cccccc solid;width:100%" cellpadding="10" border='1'>
+						
+						<tr>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;background:#7FFFD4;">_</td>
+							<td colspan=5 style="padding:5px;text-align:center;;width:71.42%;text-align:center;">
+								<?php echo $year . "年 " . ($month+0) . "月"?>
+							</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;background:#7FFFD4;">
+								<input id="next" name="<?php echo ($month +1)?>" type="button" value=">" onclick="getValue(this)">
+							</td>
+						</tr>
+						<tr>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">日</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">一</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">二</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">三</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">四</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">五</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">六</td>
+						</tr>
+						<?php foreach($calender as $k=>$v){
+								$first_remainder_for_tr = ($weekday==0)?1:0;
+								$second_remainder_for_tr = ($weekday==0)?0:6;
+								if($k%7 ==$first_remainder_for_tr){
+									echo "<tr>";
+								} 
+								
+
+								$id = (isset($v['day']))?$year . '/' . $month . '/' .  $v['day']:'';
+								$id = (isset($v['another_month']))?"":$id;
+								
+						?>
+								
+							<td id="<?php echo $id;?>"style="padding:5px;text-align:center;;width:14.28%;text-align:center;
+								color:<?php echo $v['color']?>" onclick="insertArrive(this)">
+								<?php echo isset($v['day'])?$v['day']:'';
+										echo (isset($v['holidayCategory']))?"</br>" . $v['holidayCategory']:'';
+								?>
+							</td>
+						<?php	if($k%7 ==$second_remainder_for_tr){
+									echo "</tr>";
+								}
+						} ?>
+							
+					</table>
+					</div><!--calender -->
+					
+					<div id="calender2" style="display:none">
+					<table style="border:3px #cccccc solid;width:100%" cellpadding="10" border='1'>
+						
+						<tr>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;background:#7FFFD4;">_</td>
+							<td colspan=5 style="padding:5px;text-align:center;;width:71.42%;text-align:center;">
+								<?php echo $year . "年 " . ($month+0) . "月"?>
+							</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;background:#7FFFD4;">
+								<input id="next" name="<?php echo ($month +1)?>" type="button" value=">" onclick="getValue2(this)">
+							</td>
+						</tr>
+						<tr>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">日</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">一</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">二</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">三</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">四</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">五</td>
+							<td style="padding:5px;text-align:center;;width:14.28%;text-align:center;">六</td>
+						</tr>
+						<?php foreach($calender as $k=>$v){
+								$first_remainder_for_tr = ($weekday==0)?1:0;
+								$second_remainder_for_tr = ($weekday==0)?0:6;
+								if($k%7 ==$first_remainder_for_tr){
+									echo "<tr>";
+								} 
+								
+
+								$id = (isset($v['day']))?substr($year,2) . '/' . $month . '/' .  $v['day']:'';
+								$id = (isset($v['another_month']))?"":$id;
+								
+						?>
+								
+							<td id="<?php echo $id;?>"style="padding:5px;text-align:center;;width:14.28%;text-align:center;
+								color:<?php echo $v['color']?>" onclick="insertLeave(this)">
+								<?php echo isset($v['day'])?$v['day']:'';
+										echo (isset($v['holidayCategory']))?"</br>" . $v['holidayCategory']:'';
+								?>
+							</td>
+						<?php	if($k%7 ==$second_remainder_for_tr){
+									echo "</tr>";
+								}
+						} ?>
+							
+					</table><!--  calender 2 -->
+					
+					</div>
+					<script>
+						function insertArrive(tr){
+							
+							if($("arrive").innerHTML=="" || $(tr.id).style.backgroundColor == "rgb(223, 231, 242)"
+							|| $("arrive").innerHTML=="本日不接受預訂"){
+								
+								if(tr.style.color=="red"){
+									if($(tr.id).style.backgroundColor == "rgb(223, 231, 242)"){
+										
+										$("arrive").innerHTML = '';
+										$(tr.id).style.backgroundColor = "white";
+										//console.log(tr.id);
+									}else{
+										
+										$("arrive").innerHTML = tr.id;
+										$(tr.id).style.backgroundColor = "#DFE7F2";
+										//console.log(tr.id);
+									}
+								}else{
+									$("arrive").innerHTML = "本日不接受預訂";
+									//console.log(tr.id);
+								}
+							}
+						}
+						
+						function insertLeave(sel){
+							
+							var stayDays = parseInt(sel.value);
+							var dateArrive = $("arrive").innerHTML;
+							
+							if(dateArrive!="本日不接受預訂"){
+								
+								var year = dateArrive.substr(0,4);
+								var month = dateArrive.substring(5,dateArrive.lastIndexOf("/"));
+								var day = dateArrive.substr((dateArrive.lastIndexOf("/")+1));
+								
+								var someDate = new Date(year,month,day);								
+								
+								var numberOfDaysToAdd = stayDays;
+								someDate.setDate(someDate.getDate() + numberOfDaysToAdd); 
+								var dd = someDate.getDate();
+								var mm = someDate.getMonth() ;
+								var y = someDate.getFullYear();
+
+								var someFormattedDate = y + '/'+ mm + '/'+ dd;
+								
+								$("leave").innerHTML = someFormattedDate;
+							}
+							
+						}
+					</script>
+					
+					<div style="margin-top:25px;margin-bottom:10px;margin-left:10px;margin-right:10px">
+						預定抵達時間:&nbsp;&nbsp;&nbsp;
+						<span id="arrive" style="float:center"></span>
+						<hr style="border-top: 1px solid #8c8b8b;">
+					</div>
+						
+						
+					
+					
+					<div style="margin:10px">
+						預訂天數:&nbsp;&nbsp;&nbsp;
+							<span id="stay">
+								<select id="stayDays" onchange="insertLeave(this)">
+									<option value="0" selected>請選擇</option>
+									<?php for($i=1;$i<60;$i++){ ?>
+									<option value="<?php echo $i?>"><?php echo $i?></option>
+									<?php }?>
+								</select>
+							</span>
+						<hr style="border-top: 1px solid #8c8b8b;">
+					</div>
+					<div style="margin:10px">
+						預定離開時間:&nbsp;&nbsp;&nbsp;
+							<span id="leave" style="float:center"></span>
+						<hr style="border-top: 1px solid #8c8b8b;">
+					</div>
+				</div><!--banner-bottom-video-grid -->
+					<div class="banner-bottom-video-grid-rgt">
+						<div style="padding:10px 10px 10px 20px">
+						<h4 style="color:red">【匯款資訊－ATM轉帳/匯款】</h4>
+						
+						<p>匯款銀行：大湖郵局 </p>
+						<br/>
+						<p>匯款戶名：李少興</p>
+						<br/>
+						<p>銀行代碼：700</p>
+						<br/>
+						<p>銀行帳號：局號0291164   帳號0224686</p>
+						<br/>
+						<p style="color:red">※匯款後，請務必來電告知「匯款帳號末4碼」及留下您的「姓名」、「聯絡電話」、「訂位日期」、「匯款金額」，電話【0921-636063】，即完成預訂手續。</p>						
+						</div>
+						
+						
+						<div style="padding:10px 10px 10px 20px">
+						<h4 style="color:red">【延期與退費說明】</h4>
+						
+						<p> 1.露營前1日臨時取消訂位及露營當日未到，恕不退費，訂位前請務必確認行程！ </p>
+						<br/>
+						<p> 2.匯款後，因故不能前來的客人，請務必提前3日來電告知，露營場地可保留至其他可露營時段。</p>
+						<br/>
+						<p> 3.因特殊天候環境因素(例如氣象局發佈颱風及豪雨)造成露營區無法進入，會電話通知取消露營活動，費用會退還，但需扣匯款手續費15元。</p>
+						<br/>
+						
+						</div>
+						<div style="padding:10px 10px 10px 20px">
+						<h4 style="color:red">【訂位其他注意事項】</h4>
+						
+						<p>1. 我們的營區是以「使用空間」來計費，不是以帳篷數量或車輛數計費(因為帳篷有大有小，來車數也不一定)，所以來電訂位時，請務必說明您的帳篷大小及人數、車輛數，以便雙方確認付款金額，謝謝您的配合！</p>
+						<br/>
+						<p>※註1：請務必「先確認人數及車數後再訂位」，來車數及人數比訂位時多，會影響其他營友權益，本營區不接受臨時增加人數及車輛！</p>
+						<br/>
+						<p>※註2：如果您是「多車一帳」或「一車多帳」，因使用空間較大，以實際佔用營位數量計費。</p>
+						<br/>
+						<p>2.超過6人，每多1人，每人需加收100元。</p>
+						<br/>
+						<p>3.如果因故只在營區內不搭帳，只烹煮食物或烤肉，收取清潔費300元。</p>
+						<br/>
+						<p>4.連續假日或提早週五進場請預先來電洽詢。</p>
+						<br/>
+						<p>5.本營區採「先到場先紮營」為原則，不接受預留位置，如預挑選景觀較佳位置，建議提早到達。(團體訂位，一台車先到即算先到場)</p>
+						<br/>
+						<p>6.請接受營區管理員指揮搭帳地點，勿擅自占據他人活動區域逕行搭帳，以免造成糾紛。</p>
+						<br/>
+						<p>7.為維護露營品質，包場仍須符合各營區最低車輛數之規定，若超出人數及車輛部分將加收費用。</p>
+						<br/>
+						<p>※如有未盡事宜，或進一步洽詢任何問題，請與0921-636063「逸視界露營區」聯繫，謝謝。</p>
+						<br/>
+						
+						</div>
+						
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="map">
+						<iframe width='100%' height='200' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='http://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=苗栗縣泰安鄉大興村3鄰63號旁&z=16&output=embed&t='></iframe>
+						</div>
+		</div>
+		
+	</div>
+<!-- banner-bottom -->
+
+<!-- //banner-bottom -->
+<!-- banner-bottom-video -->
+<?php /* ?>
+	<div class="banner-bottom-video">
+		<div class="container">
+			<div class="banner-bottom-video-grids">
+				<div class="banner-bottom-video-grid-left">
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+						  <h4 class="panel-title">
+							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							  assumenda est
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+						  <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTwo">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							  Itaque earum rerum
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingThree">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							  autem quibusdam
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFour">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+							  excepturi sint
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					   <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFive">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+							  voluptatum deleniti
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					   <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingSix">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+							  autem quibusdam
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingSeven">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+							  excepturi sint
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingEight">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+							  excepturi sint
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					</div>
+				</div>
+                <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >手机网站模板</a></div>
+				<div class="banner-bottom-video-grid-right">
+					<h4>Offering a wide range of services</h4>
+					<div class="banner-bottom-video-grid-rgt">
+						<img src="./view/images/2.jpg" alt=" " class="img-responsive" />
+						<div class="caption">
+							<h3>Temporibus autem quibusdam</h3>
+							<p>At vero eos et accusamus et iusto odio dignissimos ducimus 
+								qui blanditiis praesentium voluptatum deleniti atque corrupti 
+								quos dolores.</p>
+							<div class="more m1">
+								<a href="single.html">Learn More</a>
+							</div>
+						</div>
+					</div>
+					<div class="banner-bottom-video-grid-rgt">
+						<ul>
+							<li><a href="#">procure him some great pleasure</a></li>
+							<li><a href="#">voluptas assumenda est, omnis</a></li>
+							<li><a href="#">voluptatum deleniti atque corrupti</a></li>
+							<li><a href="#">blanditiis praesentium voluptatum</a></li>
+							<li><a href="#">accusamus et iusto odio</a></li>
+							<li><a href="#">qui blanditiis praesentium</a></li>
+							<li><a href="#">voluptatum deleniti atque corrupti</a></li>
+							<li><a href="#">blanditiis praesentium voluptatum</a></li>
+							<li><a href="#">accusamus et iusto odio</a></li>
+							<li><a href="#">accusamus et iusto odio</a></li>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<?php */ ?>
+<!-- //banner-bottom-video -->
+<!-- banner-slider -->
+<?php /* ?>
+	<div class="banner-slider">
+		<div class="container">
+			<div class="banner-slider-grids">
+				<div class="col-md-6 banner-slider-grid">
+					<h2>velit esse quam nihil molestiae consequatur, vel illum qui 
+						dolorem</h2>
+				</div>
+				<div class="col-md-6 banner-slider-grid">
+					<div class="banner-slider-grd">
+						<h3>quam nihil molestiae consequatur</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation 
+						ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						Velit esse quam nihil molestiae consequatur, vel illum qui dolorem.</p>
+					</div>
+					<div class="banner-slider-grd">
+						<h3>quam nihil molestiae consequatur</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation 
+						ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						Velit esse quam nihil molestiae consequatur, vel illum qui dolorem.</p>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<?php */ ?>
+<!-- //banner-slider -->
+<!-- testimonials -->
+	<?php /* ?>
+	<div class="testimonials">
+		<div class="container">
+			<h3>Testimonials</h3>
+			<div class="testimonials-grids">
+				<ul id="flexiselDemo1">			
+					<li>
+						<div class="testimonials-grid">
+							<div class="col-xs-5 testimonials-grid-left">
+								<img src="./view/images/6.jpg" alt=" " class="img-responsive" />
+							</div>
+							<div class="col-xs-7 testimonials-grid-right">
+								<div class="rating">
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+								</div>
+								<p>Itaque earum rerum hic tenetur a sapiente delectus rerum hic tenetur.<span>Andrew Williums</span></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</li>
+					<li>
+						<div class="testimonials-grid">
+							<div class="col-xs-5 testimonials-grid-left">
+								<img src="./view/images/7.jpg" alt=" " class="img-responsive" />
+							</div>
+							<div class="col-xs-7 testimonials-grid-right">
+								<div class="rating">
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+								</div>
+								<p>Itaque earum rerum hic tenetur a sapiente delectus rerum hic tenetur.<span>James</span></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</li>
+					<li>
+						<div class="testimonials-grid">
+							<div class="col-xs-5 testimonials-grid-left">
+								<img src="./view/images/8.jpg" alt=" " class="img-responsive" />
+							</div>
+							<div class="col-xs-7 testimonials-grid-right">
+								<div class="rating">
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+								</div>
+								<p>Itaque earum rerum hic tenetur a sapiente delectus rerum hic tenetur.<span>Micheal France</span></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</li>
+				</ul>
+					<script type="text/javascript">
+							$(window).load(function() {
+								$("#flexiselDemo1").flexisel({
+									visibleItems: 3,
+									animationSpeed: 1000,
+									autoPlay: true,
+									autoPlaySpeed: 3000,    		
+									pauseOnHover: true,
+									enableResponsiveBreakpoints: true,
+									responsiveBreakpoints: { 
+										portrait: { 
+											changePoint:480,
+											visibleItems: 1
+										}, 
+										landscape: { 
+											changePoint:640,
+											visibleItems:2
+										},
+										tablet: { 
+											changePoint:768,
+											visibleItems: 2
+										}
+									}
+								});
+								
+							});
+					</script>
+					<script type="text/javascript" src="./view/js/jquery.flexisel.js"></script>
+			</div>
+		</div>
+	</div>
+	<?php */ ?>
+<!-- //testimonials -->
+
+</body>
+</html>
