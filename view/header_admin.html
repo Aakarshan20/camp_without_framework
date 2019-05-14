@@ -1,0 +1,858 @@
+
+<html>
+<head>
+<title>歡迎光臨露營區查詢系統</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Residence Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="../view/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../view/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="../view/js/jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<script language="JavaScript" type="text/JavaScript">
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+<<<<<<< HEAD
+function recheck(id){　 
+
+if ( confirm ("確定刪除此筆資料? ") )
+     {　document.location.href="delAct.php?id=" + id}
+=======
+function recheck(id,table){　 
+	console.log(id,table);
+	if(table==0){
+		var suffix=id;
+	}else{
+		var suffix=id + "&table=guestinfo";
+	}
+	console.log(suffix);
+	
+if ( confirm ("確定刪除此筆資料? ") )
+     {　document.location.href="delAct.php?id=" + suffix}
+>>>>>>> update
+}
+</script>
+</head>
+	
+<body>
+<!-- banner -->
+	<div class="banner" style="background-color: rgb(51, 51, 51);background-image:url( '' )";>
+		<div class="container">
+			<div class="header-nav"> 
+				<nav class="navbar navbar-default">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					  </button>
+						<div class="logo">
+							<a class="navbar-brand" href="./index.php">後台管理<span>露營區查詢系統</span></a>
+						</div>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="../index.php">回前台</a></li>
+							<?php if(isset($_SESSION['username'])){?>
+								<li><a href="logout.php">登出</a></li>
+							<?php } ?>	
+							<?php if(isset($_SESSION['username'])){?>
+								<li><a href="chPasswd.php">更改密碼</a></li>
+							<?php } ?>								
+							<!-- <li><a href="typo.php">Typo</a></li> -->
+							<!-- <li><a href="#">相簿</a></li> -->
+							<!-- <li><a href="contact.php">Contact Us</a></li> -->
+						</ul>
+						<?php /*?>
+						<div class="search">
+							<form>
+								<i class="glyphicon glyphicon-search" aria-hidden="true"></i><input type="text" value="Search Here..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search Here...';}" required>
+							</form>
+						</div>
+						<?php  */?>
+					</div><!-- /.navbar-collapse -->	
+				<!-- </nav> -->
+			<!-- </div> -->
+<<<<<<< HEAD
+			<div class="banner-info">
+			<?php if(isset($status)) { ?>
+				<font color="white">已登入資料<?php echo isset($msg)?": " .$msg : ""; echo empty($datas)?"(目前無資料)":"";	?></font>
+				<p><center>
+					<table border="solid" style="border-color:white" >
+						<tr>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">年</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">月</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">日</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">區域</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">訂位數量</th>
+							<?php if($status=='admin'){ ?>
+							<th colspan="6"  style="padding:10px;vertical-align:middle;color:white">選項</th>
+=======
+			
+			<?php if(isset($status)) { ?>
+			<div  style="text-align:center;margin-left:90px;
+  margin-right: auto;">
+				<div style="margin:30px">
+				<font color="white">已登入資料<?php echo isset($msg)?": " .$msg : ""; echo empty($datas)?"(目前無資料)":"";	?></font>
+				</div>
+				<style>
+					.link a {
+						color:#337ab7;
+					}
+					.link a:hover{
+						color:white;
+					}
+				</style>
+				<div style="margin:30px;display: inline-block" class="link" >
+				<!--#bfa889-->
+				<a href="index.php" <?php if(!isset($_GET['category']) || ($_GET['category']=='all')){echo "style=\"color:#bfa889\"";}?>>全部訂單</a>
+				
+				</div>
+				<div style="margin:30px;display: inline-block" class="link" >
+				<a href="index.php?category=guest" 
+				<?php if(isset($_GET['category'])){
+								if($_GET['category']=='guest'){
+								echo "style=\"color:#bfa889\"";
+								}
+							} ?>>網路訂單</a>
+				</div>
+				
+				<div style="margin:30px;display: inline-block" class="link" >
+				<a href="index.php?category=admin" 
+				<?php if(isset($_GET['category'])){
+								if($_GET['category']=='admin'){
+								echo "style=\"color:#bfa889\"";
+								}
+							} ?>>自行輸入訂單</a>
+				</div>
+				
+				<p>
+					<table border="solid" style="border-color:white;width:1000px" >
+						<tr>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">年</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">月</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">日</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">區域</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">訂位數量</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">客戶姓名</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">連絡電話</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">預訂天數</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">銀行帳號</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">應收訂金</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">狀態</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">建立時間</th>
+							<?php if($status=='admin'){ ?>
+							<th colspan="6"  style="text-align:center;padding:10px;vertical-align:middle;color:white">選項</th>
+>>>>>>> update
+							<?php } ?>
+						</tr>
+						
+						<?php foreach($datas as $k=>$v){ ?>
+						<tr>
+							<?php $color = "white";?>
+<<<<<<< HEAD
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['year']?></th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['month']?></th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['day']?></th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['name']?></th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['booked']?></th>
+							
+							<?php if($status=='admin'){ ?>
+							
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:#96CDCD">
+								
+							<a href="editor.php?id=<?php echo $v['id']?>" title="開新視窗"  >編輯</a></th>
+						
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:#96CDCD">
+							<a href="#" title="開新視窗" onclick="recheck(<?php echo $v['id']?>)" >刪除</a></th>
+=======
+							<th colspan="3"  style="text-align:center;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['year']?></th>
+							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['month']?></th>
+							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['day']?></th>
+							<th colspan="3"  style="text-align:left;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['name']?></th>
+							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['booked']?></th>
+							<th colspan="3"  style="text-align:left;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['guest_name']?></th>
+							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['phone']?></th>
+							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['stayDays']?></th>
+							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['bank_account']?></th>
+							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['price'] * $v['stayDays']*$v['booked']?></th>
+							<th colspan="3"  style="text-align:center;padding:10px;vertical-align:middle;color:<?php echo $color;?>">
+							<?php switch($v['status']){
+											case 0:
+											echo "確認中";
+											break;
+											case 1:
+											echo "已確認付款";
+											break;
+											case 2:
+											echo "已逾期未付款";
+											break;
+											case 3:
+											echo "無空位";
+											break;
+										}
+								?>
+							</th>
+							<th colspan="3"  style="text-align:center;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['createtime']?></th>
+							
+							<?php if($status=='admin'){ ?>
+							
+							<th colspan="3"  style="text-align:center;padding:10px;vertical-align:middle;color:#96CDCD">
+								
+							<a href="editor.php?id=<?php echo $v['id']; echo ($v['table_type']==0)?'':"&table=guestinfo"?>" title="開新視窗"  >編輯</a></th>
+						
+							<th colspan="3"  style="text-align:center;padding:10px;vertical-align:middle;color:#96CDCD">
+							<!-- <a href="#" title="開新視窗" onclick="recheck(<?php echo $v['id']; echo ($v['table_type']==0)?'':"&table=guestinfo"?>)" >刪除</a></th> -->
+							<a href="#" title="開新視窗" onclick="recheck(<?php echo  $v['id']?>,<?php echo  $v['table_type'] ?>)" >刪除</a></th>
+>>>>>>> update
+							<?php } ?>
+						</tr>
+							
+						<?php } ?>
+					
+					</table>
+<<<<<<< HEAD
+					</center>
+				</p>
+				<?php } ?>
+				<?php if(isset($areastatus)) { ?>
+				<font color="white">已登入資料<?php echo isset($msg)?": " .$msg : ""; echo empty($datas)?"(目前無資料)":"";	?></font>
+=======
+					
+				</p>
+				</div>
+				<?php } ?>
+				<?php if(isset($areastatus)) { ?>
+				<div  style="text-align:center;">
+				<div style="margin:20px">
+				<font color="white">已登入資料<?php echo isset($msg)?": " .$msg : ""; echo empty($datas)?"(目前無資料)":"";	?></font>
+				</div>
+>>>>>>> update
+				<p><center>
+					<table border="solid" style="border-color:white" >
+						<tr>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">序號</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">名稱</th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">空位</th>
+<<<<<<< HEAD
+=======
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">價錢</th>
+>>>>>>> update
+							
+							<?php if($areastatus=='admin'){ ?>
+							<th colspan="6"  style="padding:10px;vertical-align:middle;color:white">選項</th>
+							<?php } ?>
+						</tr>
+						
+						<?php foreach($datas as $k=>$v){ ?>
+						<tr>
+							<?php $color = "white";?>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo ($k+1)?></th>
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['name']?></th>
+<<<<<<< HEAD
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['available']?></th>
+=======
+							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['available']?></th>
+							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['price']?></th>
+>>>>>>> update
+							
+							
+							<?php if($areastatus=='admin'){ ?>
+							
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:#96CDCD">
+								
+							<a href="editor.php?id=<?php echo $v['aid']?>" title="開新視窗"  >編輯</a></th>
+						
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:#96CDCD">
+							<a href="#" title="開新視窗" onclick="recheckaid(<?php echo $v['aid']?>)" >刪除</a></th>
+							<?php } ?>
+						</tr>
+							
+						<?php } ?>
+					
+					</table>
+					</center>
+				</p>
+<<<<<<< HEAD
+				<?php } ?>
+				<?php if(isset($editor)) { ?>
+				<font color="white">編輯<?php echo ($editor=='area')?"露營區":"訂位"?>資料</font>
+					
+=======
+				</div>
+				<?php } ?>
+				<?php if(isset($editor)) { ?>
+				<center>
+				<div style="margin:30px">
+				<font color="white">編輯<?php echo ($editor=='area')?"露營區":"訂位"?>資料</font>
+				</div>
+				</center>
+>>>>>>> update
+					<?php if($editor=='area'){ ?>
+					<p><center>
+						<form action="editorAct.php?m=area" method="post">
+						<table border="solid" style="border-color:white" >
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">名稱</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="text" value="<?php echo $areaDatas['name']?>"name="name"/>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
+								空位&nbsp;(&nbsp;請輸入大於零的數字&nbsp;)&nbsp;</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="text" value="<?php echo $areaDatas['available']?>"name = "available"/>
+								</th>
+							</tr>
+<<<<<<< HEAD
+=======
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
+								價錢&nbsp;(&nbsp;請輸入大於零的數字&nbsp;)&nbsp;</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="text" value="<?php echo $areaDatas['price']?>"name = "price"/>
+								</th>
+							</tr>
+>>>>>>> update
+							
+						</table>
+							<input type="hidden" name="aid" value="<?php echo $areaDatas['aid']?>">
+							<div class="contact-us1-bottom">
+								<input type="submit" value="送出" >
+							</div>
+						</form>
+						</center>
+					</p>
+					<?php }else if($editor=='data'){ ?>
+					<p>
+						<script>
+							function node(name, child){
+								this.name=name;
+								this.child=child;
+							}
+
+							function dataHierarchy(){
+								// 第一年
+								var year1=new Array();
+								var i=0;
+								
+								for(j=1;j<=12;j++){
+									
+									if(j==2){
+										var monthLengh = 28;
+										var days = Array();
+										
+										for(k=0;k<monthLengh;k++){
+											days[k] = k+1;
+										}
+										year1[i++]=new node(j, days);
+									}else if((j==4)||(j==6)||(j==9)||(j==11)){
+										var monthLengh = 30;
+										var days = Array();
+										
+										for(k=0;k<monthLengh;k++){
+											days[k] = k+1;
+										}
+										year1[i++]=new node(j, days);
+									}else{
+										var monthLengh = 31;
+										var days = Array();
+										
+										for(k=0;k<monthLengh;k++){
+											days[k] = k+1;
+										}
+										year1[i++]=new node(j, days);
+									
+									}
+									
+								}
+								
+								
+								// 第二年
+								var year2=new Array();
+								var i=0;
+								
+								for(j=1;j<=12;j++){
+									
+									if(j==2){
+										var monthLengh = 28;
+										var days = Array();
+										
+										for(k=0;k<monthLengh;k++){
+											days[k] = k+1;
+										}
+										year2[i++]=new node(j, days);
+									}else if((j==4)||(j==6)||(j==9)||(j==11)){
+										var monthLengh = 30;
+										var days = Array();
+										
+										for(k=0;k<monthLengh;k++){
+											days[k] = k+1;
+										}
+										year2[i++]=new node(j, days);
+									}else{
+										var monthLengh = 31;
+										var days = Array();
+										
+										for(k=0;k<monthLengh;k++){
+											days[k] = k+1;
+										}
+										year2[i++]=new node(j, days);
+									
+									}
+									
+								}
+								
+								var output=new Array();
+								var i=0;
+								output[i++]=new node(2016, year1);
+								
+								output[i++]=new node(2017, year2);
+								return(output);
+							}
+							dataTree=dataHierarchy();
+
+							// 第三個欄位被更動後的反應動作
+							function onChangeColumn3(){
+								updatePath();
+							}
+
+							// 第二個欄位被更動後的反應動作
+							function onChangeColumn2(){
+								form=document.order;
+								index1=form.year.selectedIndex;
+								index2=form.month.selectedIndex;
+								index3=form.day.selectedIndex;
+								// Create options for column 3
+								for (i=0;i<dataTree[index1].child[index2].child.length;i++)
+									form.day.options[i]=new Option(dataTree[index1].child[index2].child[i], dataTree[index1].child[index2].child[i]);
+								form.day.options.length=dataTree[index1].child[index2].child.length;
+								updatePath();
+							}
+
+							// 第一個欄位被更動後的反應動作
+							function onchangeColumn1() {
+								form=document.order;
+								index1=form.year.selectedIndex;
+								index2=form.month.selectedIndex;
+								index3=form.day.selectedIndex;
+								// Create options for column 2
+								for (i=0;i<dataTree[index1].child.length;i++)
+									form.month.options[i]=new Option(dataTree[index1].child[i].name, dataTree[index1].child[i].name);
+								form.month.options.length=dataTree[index1].child.length;
+								// Clear column 3
+								form.day.options.length=0;
+								updatePath();
+							}
+
+							// 修改所顯示的路徑
+							function updatePath(){
+								form=document.order;
+								index1=form.year.selectedIndex;
+								index2=form.month.selectedIndex;
+								index3=form.day.selectedIndex;
+								if ((index1>=0) && (index2>=0) && (index3>=0)) {
+									text1=form.year.options[index1].text;
+									text2=form.month.options[index2].text;
+									text3=form.day.options[index3].text;
+									form.path.value=text1+" ==> "+text2+" ==> "+text3;
+								} else
+									form.path.value="";
+							}
+							</script>
+						<center>
+<<<<<<< HEAD
+						<form name="order" action="editorAct.php?m=data" method="post">
+=======
+						<form name="order" action="editorAct.php?m=data<?php echo (isset($_GET['table']) && ($_GET['table']=="guestinfo"))?"&table=guestinfo":"";?>" method="post">
+>>>>>>> update
+						<table name="table" border="solid" style="border-color:white" >
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
+								<center>預約年份</center>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="text" value="<?php echo $datas['year']?>"name="year"/>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white"><center>預約月份</center></th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="text" value="<?php echo $datas['month']?>"name="month"/>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white"><center>預約日期</center></th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="text" value="<?php echo $datas['day']?>"name="day"/>
+								</th>
+							</tr>
+							
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white"><center>預約區域</center></th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<center>
+										<select name="aid" style="width:119px;font-size:14px;"
+										onChange=Javascript:changelist();>
+
+										<?php foreach($areas as $v){ ?>
+											<option value="<?php echo $v['aid']?>" 
+												<?php if($v['name']==$datas['name'])
+													echo "selected";
+												?>><?php echo $v['name']?>
+											</option>
+										<?php } ?>
+										</select>
+									</center>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white"><center>預約數量</center></th>
+							</tr>
+							<tr>
+								
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<center>
+									<div id=namelist>
+									<input type ="text" value="<?php echo $datas['booked']?>"name="booked"/>
+									</div>
+									</center>
+								</th>
+							</tr>
+<<<<<<< HEAD
+=======
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
+								<center>預約天數</center>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="text" value="<?php echo $datas['stayDays']?>"name="stayDays"/>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
+								<center>顧客姓名</center>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="text" value="<?php echo $datas['guest_name']?>"name="guest_name"/>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
+								<center>顧客聯絡電話</center>
+								</th>
+							</tr>
+							<tr>
+		
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="text" value="<?php echo $datas['phone']?>"name="phone"/>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
+								<center>銀行帳後後五碼</center>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="text" value="<?php echo $datas['bank_account']?>"name="bank_account"/>
+								</th>
+							</tr>
+							<tr>
+												
+		<!--[stayDays] => 5 )-->
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
+								<center>狀態</center>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<center>
+									<select  name="status" style="vertical-align:middle;width:130px;font-size:14px;" >
+									<<?php 
+									for($i=0;$i<=3;$i++){ ?>
+									<option value="<?php echo $i ?>"<?php echo ($i==$datas['status'])?"selected":''?>>
+										<?php switch($i){
+											case 0:
+											echo "確認中";
+											break;
+											case 1:
+											echo "已確認付款";
+											break;
+											case 2:
+											echo "已逾期未付款";
+											break;
+											case 3:
+											echo "無空位";
+											break;
+										}
+								
+								?>
+									</option>
+									<?php } ?>
+									</select>
+									<center>
+									
+								</th>
+							</tr>
+>>>>>>> update
+							
+							
+						</table>
+							<script language=javascript>
+				changelist();
+				function changelist()
+				{
+<<<<<<< HEAD
+=======
+					  
+					  /*
+>>>>>>> update
+					  switch(document.order.aid.value)
+					  {		
+							<?php foreach($areas as $v){ ?>
+								case "<?php echo $v['aid']?>":
+								document.all.namelist.innerHTML="<select name=booked style=\"width:119px;font-size:14px;\">"+
+								
+								<?php 	
+									$value='"';
+									for($i=1;$i<=$v['available'];$i++){
+										$value.='<option value='.$i.'>'.$i;
+									}
+									$value.='"';
+										echo $value;
+								?>
+								
+								+"</select>"
+								break;
+							<?php } ?>
+					  }
+<<<<<<< HEAD
+				}                                                                                
+=======
+					  */
+				}
+					function $id(id){
+						return document.getElementById(id);
+					}
+>>>>>>> update
+				</script>    
+								<br/>
+								<br/>
+								</h4>
+							<input type="hidden" name="id" value="<?php echo $datas['id']?>">
+							<div class="contact-us1-bottom">
+								<input type="submit" value="送出" >
+							</div>
+						</form>
+						</center>
+					</p>
+					<?php } ?>
+				<?php } ?>
+				<?php if(isset($login)){ ?>
+<<<<<<< HEAD
+				<font color="white">請輸入帳號密碼</font>
+					
+=======
+				<center>
+				<div style="margin-top:100px;margin-bottom:50px">
+				
+				<font color="white"><h4>請輸入帳號密碼</h4></font>
+				</center>
+				</div>
+>>>>>>> update
+					
+					<p><center>
+						<form action="connect.php" method="post">
+						<table border="solid" style="border-color:white" >
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">帳號</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="text" name="id"/>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
+								密碼</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="password" name = "pw"/>
+								</th>
+							</tr>
+							
+							
+						</table>
+							<input type="hidden" name="aid" value="<?php echo $areaDatas['aid']?>">
+							<div class="contact-us1-bottom">
+								<input type="submit" value="送出" >
+							</div>
+						</form>
+						</center>
+					</p>
+<<<<<<< HEAD
+					<?php } ?>
+					<?php if(isset($chPasswd) && $chPasswd=='true'){ ?>
+				<font color="white">請輸入帳號、舊密碼與新密碼</font>
+					
+=======
+					
+					<?php } ?>
+					<?php if(isset($chPasswd) && $chPasswd=='true'){ ?>
+					<center>
+					<div style="margin:50px">
+					
+				<font color="white">請輸入帳號、舊密碼與新密碼</font>
+					</div>
+					</center>
+>>>>>>> update
+					<p><center>
+						<form action="connect.php" method="post">
+						<table border="solid" style="border-color:white" >
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">帳號</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="text" name="id"/>
+								</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
+								舊密碼</th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="password" name = "pw"/>
+								</th>
+							</tr>
+							<tr>
+								
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
+								<span id="info1">新密碼</span></th>
+								
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="password" name = "new_pw" onkeyup="validPwd()" id="pwd1"/>
+								</th>
+								
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
+								<span id="info2">確認新密碼</span></th>
+							</tr>
+							<tr>
+								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
+									<input type ="password" name = "re_new_pw" onkeyup="validPwd2()" id="pwd2"/>
+								</th>
+							</tr>
+							<script>
+							function  validPwd(){
+								
+								var pwd = document.getElementById("pwd1").value;
+								var info = document.getElementById("info1");
+								if(pwd.length<6){
+									info.innerHTML = "密碼太短:至少要六個數";
+								}else{
+									info.innerHTML = "新密碼";
+								}
+							}
+							
+							function  validPwd2(){
+								
+								var pwd = document.getElementById("pwd2").value;
+								var info = document.getElementById("info2");
+								if(pwd.length<6){
+									info.innerHTML = "密碼太短:至少要六個數";
+								}else{
+									info.innerHTML = "確認新密碼";
+								}
+							}
+							</script>
+							
+						</table>
+							
+							<div class="contact-us1-bottom">
+								<input type="submit" value="送出" >
+							</div>
+						</form>
+						</center>
+					</p>
+					<?php } ?>
+					<?php if(isset($bannerMsg)){ ?>
+<<<<<<< HEAD
+				<font color="white">提示訊息&nbsp;:&nbsp;<?php echo $bannerMsg?></font>
+					
+=======
+				<div style="margin:100px">
+				<center>
+				<font color="white"><h4>提示訊息&nbsp;:&nbsp;<?php echo $bannerMsg?></h4></font>
+				</center>
+				</div>
+>>>>>>> update
+					<?php 	$bannerMsgUrl = isset($bannerMsgUrl)?$bannerMsgUrl:"index.php";
+							$buttonMsg = isset($buttonMsg)?$buttonMsg:"回管理頁面";
+					?>
+					<p><center>
+						<form action="<?php echo $bannerMsgUrl?>" method="post" >
+						<table border="solid" style="border-color:white" >
+							<font color="white">
+								</font>
+							<div class="contact-us1-bottom">
+								<input type="submit" value="<?php echo $buttonMsg;?>" >
+							</div>
+						</table>
+						</form>
+						
+						</center>
+					</p>
+					<?php } ?>
+					
+				
+					
+						
+				
+				<!-- <div class="more m1">-->
+					<!-- <a href="single.php">Learn More</a> -->
+				<!-- </div> -->
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

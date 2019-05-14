@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>歡迎光臨露營區查詢系統</title>
+
+</head>
+	
+<body>
+<!-- //banner -->
+<!-- banner-bottom -->
+	<div class="banner-bottom">
+		<div class="container">
+			<div class="banner-bottom-grids">
+				<?php foreach($areas as $k=>$v){ ?>
+				<div class="col-md-3 banner-bottom-grid">
+				
+					<img src="<?php echo ($k<4)?$area_covers[$k]:"./view/images/camp.jpg";?>" alt=" " class="img-responsive" /> 
+					<!-- <img src="./photos/A/IMG_1175.JPG" alt=" " class="img-responsive" /> -->
+					<div class="banner-bottom-grid-info">
+						<a name="<?php echo $v['aid']?>"></a>
+						<!-- <div class="col-xs-4 banner-bottom-grid-infol"> -->
+							
+							<!-- <p></p> -->
+							
+						<!-- </div> -->
+						<div class="col-xs-8 banner-bottom-grid-infor">
+						<br/>
+							
+							<h3><?php echo $v['name'] . " "?></h3>
+							
+						</div>
+						<div class="clearfix"> </div>
+						<p class="vel">
+						<style>
+						table
+							  {
+							  width:100%;
+							  }
+						</style>
+						<table style="width:260px;border-color:black" border="2px" >
+									<tr >
+										<th style="padding:5px;"><h5 style="color:black;font-size:15px;width:20%"><nobr>日期</nobr></h5></th>
+										<th style="padding:5px;"><h5 style="color:black;font-size:15px;width:20%"><nobr>已訂</nobr></h5></th>
+										<th style="padding:5px;"><h5 style="color:black;font-size:15px;width:20%"><nobr>總數</nobr></h5></th>
+										<th style="padding:5px;"><h5 style="color:black;font-size:15px;width:20%"><nobr>備註</nobr></h5></th>
+									</tr>
+									<?php for($i=$day-1;$i<$day_of_month;$i++){ ?>
+									<tr>
+										<th style="padding:5px;"><h5 style="color:black;font-size:15px">&nbsp;&nbsp;<?php echo $i+1?></h5></th>
+										
+										<th style="padding:5px;"><h5 style="color:black;font-size:15px">
+										<?php 	$booked=0;
+									if($datas){
+										if(array_key_exists($v['aid'],$aid_datas_arr)){
+											foreach($aid_datas_arr[$v['aid']] as $inner_v){
+												if($inner_v['day']==$i+1){
+													$booked = $inner_v['booked'];
+												}
+											}
+
+										}
+									}
+									
+									echo "&nbsp;&nbsp;" . $booked . " ";
+							?>
+										</h5>
+										</th>
+										<th style="padding:5px;">
+										<h5 style="color:black;font-size:15px">&nbsp;<?php echo $v['available']?>&nbsp;</h5></th>
+										<th colspan="2"  style="padding:10px;vertical-align:middle;">
+										<?php
+											$remainder = $v['available'] - $booked;
+											if($remainder==0){ ?>
+											<h5 style="color:#CD3333;font-size:15px"><?php echo "本日已滿";?></h5>
+												
+											<?php }else{ ?>
+											<font style="color:black;font-size:15px">剩<?php echo $remainder;?>個位置</font>
+										
+										<?php } ?>
+										
+										</th>
+									</tr>
+									<?php } ?>
+									
+								</table>
+								
+						</p>
+							<div class="more m1">
+								<a href="#top">回到日曆</a>
+							<?php if($k<4){ ?>
+							
+								<a href="gallery.php?g=<?php echo $k?>">查看相簿</a>
+							
+							<?php } ?>
+							
+							
+							</div>
+							
+							
+							
+							<br/>
+							<br/>
+							<br/>
+					</div>
+				</div>
+				<?php  } ?>
+				<?php /*?>
+				<div class="col-md-3 banner-bottom-grid">
+					<img src="./view/images/2.jpg" alt=" " class="img-responsive" />
+					<div class="banner-bottom-grid-info">
+						<div class="col-xs-4 banner-bottom-grid-infol">
+							<p>.02</p>
+						</div>
+						<div class="col-xs-8 banner-bottom-grid-infor">
+							<h3>qui dolorem fugiat</h3>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="vel">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse 
+								quam nihil molestiae consequatur.</p>
+							<div class="more m1">
+								<a href="single.html">Learn More</a>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-3 banner-bottom-grid">
+					<img src="./view/images/3.jpg" alt=" " class="img-responsive" />
+					<div class="banner-bottom-grid-info">
+						<div class="col-xs-4 banner-bottom-grid-infol">
+							<p>.03</p>
+						</div>
+						<div class="col-xs-8 banner-bottom-grid-infor">
+							<h3>qui dolorem fugiat</h3>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="vel">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse 
+								quam nihil molestiae consequatur.</p>
+							<div class="more m1">
+								<a href="single.html">Learn More</a>
+							</div>
+					</div>
+				</div>
+				<div class="col-md-3 banner-bottom-grid">
+					<img src="./view/images/4.jpg" alt=" " class="img-responsive" />
+					<div class="banner-bottom-grid-info">
+						<div class="col-xs-4 banner-bottom-grid-infol">
+							<p>.04</p>
+						</div>
+						<div class="col-xs-8 banner-bottom-grid-infor">
+							<h3>qui dolorem fugiat</h3>
+						</div>
+						<div class="clearfix"> </div>
+						<p class="vel">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse 
+								quam nihil molestiae consequatur.</p>
+							<div class="more m1">
+								<a href="single.html">Learn More</a>
+							</div>
+					</div>
+				</div>
+				<?php  */?>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+<!-- //banner-bottom -->
+<!-- banner-bottom-video -->
+<?php /* ?>
+	<div class="banner-bottom-video">
+		<div class="container">
+			<div class="banner-bottom-video-grids">
+				<div class="banner-bottom-video-grid-left">
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+						  <h4 class="panel-title">
+							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							  assumenda est
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+						  <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTwo">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							  Itaque earum rerum
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingThree">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							  autem quibusdam
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFour">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+							  excepturi sint
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					   <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFive">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+							  voluptatum deleniti
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					   <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingSix">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+							  autem quibusdam
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingSeven">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+							  excepturi sint
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingEight">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+							  excepturi sint
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+						   <div class="panel-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+						  </div>
+						</div>
+					  </div>
+					</div>
+				</div>
+                <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >手机网站模板</a></div>
+				<div class="banner-bottom-video-grid-right">
+					<h4>Offering a wide range of services</h4>
+					<div class="banner-bottom-video-grid-rgt">
+						<img src="./view/images/2.jpg" alt=" " class="img-responsive" />
+						<div class="caption">
+							<h3>Temporibus autem quibusdam</h3>
+							<p>At vero eos et accusamus et iusto odio dignissimos ducimus 
+								qui blanditiis praesentium voluptatum deleniti atque corrupti 
+								quos dolores.</p>
+							<div class="more m1">
+								<a href="single.html">Learn More</a>
+							</div>
+						</div>
+					</div>
+					<div class="banner-bottom-video-grid-rgt">
+						<ul>
+							<li><a href="#">procure him some great pleasure</a></li>
+							<li><a href="#">voluptas assumenda est, omnis</a></li>
+							<li><a href="#">voluptatum deleniti atque corrupti</a></li>
+							<li><a href="#">blanditiis praesentium voluptatum</a></li>
+							<li><a href="#">accusamus et iusto odio</a></li>
+							<li><a href="#">qui blanditiis praesentium</a></li>
+							<li><a href="#">voluptatum deleniti atque corrupti</a></li>
+							<li><a href="#">blanditiis praesentium voluptatum</a></li>
+							<li><a href="#">accusamus et iusto odio</a></li>
+							<li><a href="#">accusamus et iusto odio</a></li>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<?php */ ?>
+<!-- //banner-bottom-video -->
+<!-- banner-slider -->
+<?php /* ?>
+	<div class="banner-slider">
+		<div class="container">
+			<div class="banner-slider-grids">
+				<div class="col-md-6 banner-slider-grid">
+					<h2>velit esse quam nihil molestiae consequatur, vel illum qui 
+						dolorem</h2>
+				</div>
+				<div class="col-md-6 banner-slider-grid">
+					<div class="banner-slider-grd">
+						<h3>quam nihil molestiae consequatur</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation 
+						ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						Velit esse quam nihil molestiae consequatur, vel illum qui dolorem.</p>
+					</div>
+					<div class="banner-slider-grd">
+						<h3>quam nihil molestiae consequatur</h3>
+						<p>Ut enim ad minim veniam, quis nostrud exercitation 
+						ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						Velit esse quam nihil molestiae consequatur, vel illum qui dolorem.</p>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<?php */ ?>
+<!-- //banner-slider -->
+<!-- testimonials -->
+	<?php /* ?>
+	<div class="testimonials">
+		<div class="container">
+			<h3>Testimonials</h3>
+			<div class="testimonials-grids">
+				<ul id="flexiselDemo1">			
+					<li>
+						<div class="testimonials-grid">
+							<div class="col-xs-5 testimonials-grid-left">
+								<img src="./view/images/6.jpg" alt=" " class="img-responsive" />
+							</div>
+							<div class="col-xs-7 testimonials-grid-right">
+								<div class="rating">
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+								</div>
+								<p>Itaque earum rerum hic tenetur a sapiente delectus rerum hic tenetur.<span>Andrew Williums</span></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</li>
+					<li>
+						<div class="testimonials-grid">
+							<div class="col-xs-5 testimonials-grid-left">
+								<img src="./view/images/7.jpg" alt=" " class="img-responsive" />
+							</div>
+							<div class="col-xs-7 testimonials-grid-right">
+								<div class="rating">
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+								</div>
+								<p>Itaque earum rerum hic tenetur a sapiente delectus rerum hic tenetur.<span>James</span></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</li>
+					<li>
+						<div class="testimonials-grid">
+							<div class="col-xs-5 testimonials-grid-left">
+								<img src="./view/images/8.jpg" alt=" " class="img-responsive" />
+							</div>
+							<div class="col-xs-7 testimonials-grid-right">
+								<div class="rating">
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+									<span>☆</span>
+								</div>
+								<p>Itaque earum rerum hic tenetur a sapiente delectus rerum hic tenetur.<span>Micheal France</span></p>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</li>
+				</ul>
+					<script type="text/javascript">
+							$(window).load(function() {
+								$("#flexiselDemo1").flexisel({
+									visibleItems: 3,
+									animationSpeed: 1000,
+									autoPlay: true,
+									autoPlaySpeed: 3000,    		
+									pauseOnHover: true,
+									enableResponsiveBreakpoints: true,
+									responsiveBreakpoints: { 
+										portrait: { 
+											changePoint:480,
+											visibleItems: 1
+										}, 
+										landscape: { 
+											changePoint:640,
+											visibleItems:2
+										},
+										tablet: { 
+											changePoint:768,
+											visibleItems: 2
+										}
+									}
+								});
+								
+							});
+					</script>
+					<script type="text/javascript" src="./view/js/jquery.flexisel.js"></script>
+			</div>
+		</div>
+	</div>
+	<?php */ ?>
+<!-- //testimonials -->
+
+</body>
+</html>

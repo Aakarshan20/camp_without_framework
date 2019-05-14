@@ -1,0 +1,347 @@
+<<<<<<< HEAD
+<div class="banner-bottom-video-grid-left">
+				<div style="padding:15px">
+				<a href="<?php echo $first_link?>"><h4><?php echo $first_link_title?></h4></a>
+				</div>
+				<div style="padding:15px;margin-bottom:15px">
+				<a href="<?php echo $second_link?>"><h4><?php echo $second_link_title?></h4></a>
+				</div>
+
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+=======
+<script src="./view/js/tools.js"></script>
+<div class="banner-bottom-video-grid-left">
+				<style>
+					.leftmenu{
+						cursor:pointer;
+					}
+				</style>
+				
+				<?php /*?>
+				<div style="padding:15px;" >
+					<ul> 
+						<li style="display:inline;font-size:1.17em;margin-left:60px"><a href="guestOrder.php">查看訂單</a></li> 
+						<?php if(!empty($_SESSION['usertoken'])){ ?>
+						<li style="display:inline;font-size:1.17em;margin-left:60px"><a href="logout.php">登出</a></li> 
+						<?php } else{ ?>
+						<li style="display:inline;font-size:1.17em;margin-left:60px;" ><a href="login.php">登入</a></li> 
+						<?php } ?>
+					</ul>
+				</div>
+				
+				<?php */?>
+
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						<?php ?>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" 
+						<?php echo (basename($_SERVER['PHP_SELF']) == "index.php")?"style=\"background:grey\"":""?>>
+						  <h4 class="panel-title">
+							<a class = "leftmenu" href="index.php"  
+								<?php echo (basename($_SERVER['PHP_SELF']) == "index.php")?"style=\"color:white\"":""?>>
+							  回首頁
+							</a>
+						  </h4>
+						</div>
+					  </div>
+					  
+					  
+					  
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab"
+							<?php echo (basename($_SERVER['PHP_SELF']) == "guestOrder.php")?"style=\"background:grey\"":""?>>
+						  <h4 class="panel-title">	
+							<a class = "leftmenu" href="guestOrder.php"
+								<?php echo (basename($_SERVER['PHP_SELF']) == "guestOrder.php")?"style=\"color:white\"":""?>>
+							  查看訂單
+							</a>
+						  </h4>
+						</div>
+					  </div>
+					  
+					   <div class="panel panel-default">
+						<div class="panel-heading" role="tab">
+							
+						  <h4 class="panel-title">	
+						  <?php if(!empty($_SESSION['usertoken'])){ ?>
+							<a class = "leftmenu" href="logout.php">
+							  登出
+							</a>
+							<?php } else {  ?>
+							<a class = "leftmenu" href="login.php">
+							  登入
+							</a>
+							<?php } ?>
+						  </h4>
+						</div>
+					  </div>
+					  
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" 
+							<?php echo (basename($_SERVER['PHP_SELF']) == "order.php")?"style=\"background:grey\"":""?>>
+						  <h4 class="panel-title">	
+							<a class = "leftmenu" href="order.php"
+								<?php echo (basename($_SERVER['PHP_SELF']) == "order.php")?"style=\"color:white\"":""?>>
+							  立即訂位
+							</a>
+						  </h4>
+						</div>
+					  </div>
+					  
+					  
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" 
+						<?php echo (basename($_SERVER['PHP_SELF']) == "map.php")?"style=\"background:grey\"":""?>>
+						  <h4 class="panel-title">	
+							<a class = "leftmenu" href="map.php"
+							<?php echo (basename($_SERVER['PHP_SELF']) == "map.php")?"style=\"color:white\"":""?>>
+							 行車動線
+							</a>
+						  </h4>
+						</div>
+					  </div>
+					  
+					    <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingZero">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
+							  營區剩餘空位查詢
+							</a>
+						  </h4>
+						</div>
+						<style>
+						
+						</style>
+						
+						<div id="collapseZero" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingZero">
+						   <div class="panel-body">
+							<div id="camp_site_remains">
+								<!--選單-->
+								<div style="text-align:center;margin-top:10px">
+									<div id="area_id" ></div>
+									<select id="select_camp_site" name="select_camp_site" onchange="get_remains_site(this)">
+										<option value="0"  selected>請選擇地區</option>
+										<?php foreach($areas as $v){ ?>
+												<option value="<?php echo $v['aid']?>"><?php echo $v['name']?></option>
+										<?php } ?>
+									</select>
+								</div>
+								<!--選單-->
+								<div id="show_remains_area" style="text-align:center;margin-top:10px">
+								
+								</div>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					  
+>>>>>>> update
+					  
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+						  <h4 class="panel-title">	
+							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							  A區介紹/相簿
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+						  <div class="panel-body">
+							<p>●價格：一帳900$</p>
+							<p>●營位：共14個</p>
+							<p>●電源插座：有，110V。</p>
+							<p>●衛浴廁：有。男廁2間、男浴室2間、男浴室(含廁所)1間。女廁2間、女浴室2間、女浴室(含廁所)1間。合計10間浴廁。浴室內備有拖鞋。洗手台設有吹風機一隻。</p>
+							<p>●其他設施：水槽9座。</p>
+							<p>●說明：本區位於露營區最高處，視野最佳，露營區最上方設有一觀景平台，可360度環視眺望山巒疊起的雪山山脈與中央山脈，光害少，夜間星斗佈滿天空。</p>
+							
+							<a href="gallery.php?p=0">●進入A區相簿</a>
+						  </div>
+						</div>
+					  </div>
+<<<<<<< HEAD
+					  <?php /*?>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTwo">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							  B區介紹/相簿
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						   <div class="panel-body">
+							<p>●營位：共10個</p>
+							<p>●電源插座：有，110V。</p>
+							<p>●衛浴廁：無，可與A、C區共用，步行1分鐘。</p>
+							<p>●其他設施：水槽7座。</p>
+							<p>●說明：本區位於A區下方，營位數少，活動空間大，適合親子遊憩及活動，視野遼闊，隨時都有雲海包圍，彷彿置身仙境。</p>
+							
+							<a href="gallery.php?p=1">●進入B區相簿</a>
+						  </div>
+						</div>
+					  </div>
+					  <?php */?>
+=======
+					  
+>>>>>>> update
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingTwo">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							  B區介紹/相簿
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						   <div class="panel-body">
+							<p>●價格：一帳900$</p>
+							<p>●營位：共10個</p>
+							<p>●電源插座：有，110V。</p>
+<<<<<<< HEAD
+							<p>●衛浴廁：無，可與A、C區共用，步行1分鐘。</p>
+=======
+							<p>●衛浴廁：無。</p>
+>>>>>>> update
+							<p>●其他設施：水槽7座。</p>
+							<p>●說明：本區位於A區下方，營位數少，活動空間大，適合親子遊憩及活動，視野遼闊，隨時都有雲海包圍，彷彿置身仙境。</p>
+							
+							<a href="gallery.php?p=1">●進入B區相簿</a>
+						  </div>
+						</div>
+					  </div>
+<<<<<<< HEAD
+=======
+					  
+>>>>>>> update
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingThree">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							  C區介紹/相簿
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						   <div class="panel-body">
+							<p>●價格：一帳900$</p>
+							<p>●營位：共20個</p>
+							<p>●電源插座：有，110V。</p>
+							<p>●衛浴廁：有。男廁2間、男浴室2間、男浴室(含廁所)1間。女廁2間、女浴室2間、女浴室(含廁所)1間。合計10間浴廁。浴室內備有拖鞋。洗手台設有吹風機一隻。</p>
+							<p>●其他設施：水槽9座。</p>
+							<p>●說明：本區位於B區下方，與B區相連，視野佳，本區面積最大且平坦，適合營隊、團體包場。</p>
+							<a href="gallery.php?p=2">●進入C區相簿</a>
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFour">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+							  D區介紹/相簿
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+						   <div class="panel-body">
+							<p>●價格：一帳1000$</p>
+							<p>●營位：共20個</p>
+							<p>●營位大小：長約900cm，寬約540cm。</p>
+							<p>●電源插座：有，110V。</p>
+							<p>●衛浴廁：有。純廁所2間、純浴室3間、衛浴(浴室+廁所)1間，男生小便斗1間。合計6間浴廁。浴廁採乾溼分離(加裝浴簾)，並備有拖鞋。吹風機一隻。</p>
+							<p>●其他設施：水槽10座。</p>
+							<p>●說明：本區位於露營區最下方，營區管理室前方，設置有屋頂可遮雨之屋棚露營區，場地平坦視野佳，營區劃分較其他區大，適合帳棚大者搭設。</p>
+							<a href="gallery.php?p=3">●進入D區相簿</a>
+						  </div>
+						</div>
+					  </div>
+					   <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingFive">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+							  逸安1區介紹/相簿
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+						   <div class="panel-body">
+							<p>●價格：一帳900$</p>
+							<p>●營位：共5個</p>
+							<p>●營位大小：長約300cm，寬約300cm。</p>
+							<p>●電源插座：有，110V。</p>
+							
+							<p>●衛浴廁：有。衛浴(浴室+廁所)1間，純浴室1間。吹風機兩隻。</p>
+							<p>●其他設施：水槽2座。</p>
+							<p>●說明：本區在C區下方，前方景色可以挑望耀婆山，本區下方是D區.旁邊是營本部，場地平坦視野佳，本區適合團體包場。</p>
+							<a href="gallery.php?p=4">●進入逸安1區相簿</a>
+							
+						  </div>
+						</div>
+					  </div>
+					   <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingSix">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+							  逸安2區介紹/相簿
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+						   <div class="panel-body">
+							<p>●價格：一帳900$</p>
+							<p>●營位：共3帳</p>
+							<p>●營位大小：長約300cm，寬約300cm。</p>
+							<p>●電源插座：有，110V。</p>
+							
+							<p>●衛浴廁：有。衛浴(浴室+廁所)1間，男生小便斗2座。吹風機一隻。</p>
+							<p>●其他設施：水槽2座。</p>
+							<p>●說明：本區在逸安大區下方，景色可以看到大湖市區，晚上可以觀賞星空，適合小團體包場。</p>
+							<a href="gallery.php?p=5">●進入逸安2區相簿</a>
+						  </div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingSeven">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+							  逸安3區介紹/相簿
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+							<div class="panel-body">
+							<p>●價格：一帳900$</p>
+							<p>●營位：共6帳</p>
+							<p>●營位大小：長約300cm，寬約300cm。</p>
+							<p>●電源插座：有，110V。</p>
+							
+							<p>●衛浴廁：有。衛浴(浴室+廁所)1間，純浴室一間，男生小便斗2座。吹風機兩隻。</p>
+							<p>●其他設施：水槽3座。</p>
+							<p>●說明：本區在2區下方，場地約長方形，場地平坦視野佳，適合團體包場。</p>
+							<a href="gallery.php?p=6">●進入逸安3區相簿</a>
+							</div>
+						</div>
+					  </div>
+					  <div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingEight">
+						  <h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+							  逸安大區介紹/相簿
+							</a>
+						  </h4>
+						</div>
+						<div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+						   <div class="panel-body">
+							<p>●價格：一帳1000$</p>
+							<p>●營位：共10帳</p>
+							<p>●營位大小：長約900cm，寬約450cm。</p>
+							<p>●電源插座：有，110V。</p>
+							
+							<p>●衛浴廁：有。衛浴(浴室+廁所)2間，純浴室兩間，男生小便斗2座。吹風機兩隻。</p>
+							<p>●其他設施：水槽5座。</p>
+							<p>●說明：本區在C區下方，可以遠望要婆山，可以看到大湖市區街景，場地平坦視野佳。</p>
+							<a href="gallery.php?p=7">●進入逸安大區相簿</a>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				</div>

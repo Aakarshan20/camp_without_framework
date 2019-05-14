@@ -1,0 +1,47 @@
+<?php foreach($areas as $k=>v){ ?>
+select2[<?php echo $k?>] = new Array(); 
+<?php for($i=0;$i<$v['available'];$i++){ ?>
+select2[<?php echo $k?>][<?php echo $i?>] = '<?php echo ($i+1)?>';
+<?php } ?>
+
+
+<html>
+<script>
+var select1 = new Array(); 
+select1[0] = 'CPU';
+select1[1] = '主機板';
+var select2 = new Array();
+select2[0] = new Array(); 
+select2[0][0] = 'Intel';
+select2[0][1] = 'AMD';
+select2[0][2] = '其他';
+select2[1] = new Array()
+select2[1][0] = '華碩';
+select2[1][1] = '技嘉';
+select2[1][2] = '微星';
+function loadMaster( master, detail ) {
+master.options.length = select1.length;
+for( i = 0; i < select1.length; i++ ) {
+master.options[ i ] = new Option( select1[i], select1[i] ); // Option( text , value );
+}
+master.selectedIndex = 0;
+doNewMaster( master, detail );
+}
+function doNewMaster( master, detail ) { 
+detail.options.length = select2[ master.selectedIndex ].length;
+for( i = 0; i < select2[ master.selectedIndex ].length; i++ ) {
+detail.options[ i ] = new Option( select2[ master.selectedIndex ][ i ],
+select2[ master.selectedIndex ][ i ] );
+}
+}
+</script>
+<body onLoad="loadMaster( document.getElementById( 'select1' ), 
+document.getElementById( 'select2' ) ); " topmargin=0 leftmargin=0 class=body2 >
+<select class=FieldData name="select1" id="select1" style='Position:absolute; top: 396px; left: 310px; width: 200px; height: 20px '
+onChange="doNewMaster( document.getElementById( 'select1' ), 
+document.getElementById( 'select2' ) );">
+</select>
+<select class=FieldData name="select2" id="select2" style='Position:absolute; top: 433px; left: 309px; width: 200px; height: 20px ' >
+</select>
+</body>
+</html>

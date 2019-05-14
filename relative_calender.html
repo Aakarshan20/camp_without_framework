@@ -1,0 +1,176 @@
+
+
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf8">
+</head>
+
+<body>
+<h2 align=center>動態下拉式選單：三框連動（三層樹狀選項）</h2>
+<hr>
+
+<script>
+function node(name, child){
+	this.name=name;
+	this.child=child;
+}
+
+function dataHierarchy(){
+	// 國語歌手
+	var year1=new Array();
+	var i=0;
+	
+	for(j=1;j<=12;j++){
+		
+		if(j==2){
+			var monthLengh = 28;
+			var days = Array();
+			
+			for(k=0;k<monthLengh;k++){
+				days[k] = k+1;
+			}
+			year1[i++]=new node(j, days);
+		}else if((j==4)||(j==6)||(j==9)||(j==11)){
+			var monthLengh = 30;
+			var days = Array();
+			
+			for(k=0;k<monthLengh;k++){
+				days[k] = k+1;
+			}
+			year1[i++]=new node(j, days);
+		}else{
+			var monthLengh = 31;
+			var days = Array();
+			
+			for(k=0;k<monthLengh;k++){
+				days[k] = k+1;
+			}
+			year1[i++]=new node(j, days);
+		
+		}
+		
+	}
+	
+	
+	// 英語歌手
+	var year2=new Array();
+	var i=0;
+	
+	for(j=1;j<=12;j++){
+		
+		if(j==2){
+			var monthLengh = 28;
+			var days = Array();
+			
+			for(k=0;k<monthLengh;k++){
+				days[k] = k+1;
+			}
+			year2[i++]=new node(j, days);
+		}else if((j==4)||(j==6)||(j==9)||(j==11)){
+			var monthLengh = 30;
+			var days = Array();
+			
+			for(k=0;k<monthLengh;k++){
+				days[k] = k+1;
+			}
+			year2[i++]=new node(j, days);
+		}else{
+			var monthLengh = 31;
+			var days = Array();
+			
+			for(k=0;k<monthLengh;k++){
+				days[k] = k+1;
+			}
+			year2[i++]=new node(j, days);
+		
+		}
+		
+	}
+	
+	
+	
+	
+	// 語言類別
+	var output=new Array();
+	var i=0;
+	output[i++]=new node(2016, year1);
+	
+	output[i++]=new node(2017, year2);
+	return(output);
+}
+dataTree=dataHierarchy();
+
+// 第三個欄位被更動後的反應動作
+function onChangeColumn3(){
+	updatePath();
+}
+
+// 第二個欄位被更動後的反應動作
+function onChangeColumn2(){
+	form=document.theForm;
+	index1=form.column1.selectedIndex;
+	index2=form.column2.selectedIndex;
+	index3=form.column3.selectedIndex;
+	// Create options for column 3
+	for (i=0;i<dataTree[index1].child[index2].child.length;i++)
+		form.column3.options[i]=new Option(dataTree[index1].child[index2].child[i], dataTree[index1].child[index2].child[i]);
+	form.column3.options.length=dataTree[index1].child[index2].child.length;
+	updatePath();
+}
+
+// 第一個欄位被更動後的反應動作
+function onChangeColumn1() {
+	form=document.theForm;
+	index1=form.column1.selectedIndex;
+	index2=form.column2.selectedIndex;
+	index3=form.column3.selectedIndex;
+	// Create options for column 2
+	for (i=0;i<dataTree[index1].child.length;i++)
+		form.column2.options[i]=new Option(dataTree[index1].child[i].name, dataTree[index1].child[i].name);
+	form.column2.options.length=dataTree[index1].child.length;
+	// Clear column 3
+	form.column3.options.length=0;
+	updatePath();
+}
+
+// 修改所顯示的路徑
+function updatePath(){
+	form=document.theForm;
+	index1=form.column1.selectedIndex;
+	index2=form.column2.selectedIndex;
+	index3=form.column3.selectedIndex;
+	if ((index1>=0) && (index2>=0) && (index3>=0)) {
+		text1=form.column1.options[index1].text;
+		text2=form.column2.options[index2].text;
+		text3=form.column3.options[index3].text;
+		form.path.value=text1+" ==> "+text2+" ==> "+text3;
+	} else
+		form.path.value="";
+}
+</script>
+
+<form name="theForm">
+<table align=center border=1>
+	<tr>
+		<th>年<th>月<th>日
+	<tr>
+		<td align=center>
+			<select name="column1" size=10 onChange="onChangeColumn1();">
+				<script>
+				for (i=0; i<dataTree.length; i++)
+					document.writeln("<option value=\""+dataTree[i].name+"\">"+dataTree[i].name);
+				</script>
+			</select>
+		<td align=center>
+			<select name="column2" size=10 onChange="onChangeColumn2();">
+			</select>
+		<td align=center>
+			<select name="column3" size=10 onChange="onChangeColumn3();">
+			</select>
+	<tr><td colspan=3 align=center>路徑：<input type=text name=path size=60></td></tr>
+</table>
+</form>
+
+<hr>
+</body>
+</html>

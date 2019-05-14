@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>歡迎光臨露營區查詢系統</title>
+
+</head>
+	
+<body>
+<!-- //banner -->
+	<p><font color="white">.</font></p>
+	<div class="banner-bottom-video">
+		<div class="container">
+			<div class="banner-bottom-video-grids" >
+				<center>
+				
+				<table style=";text-align:center">
+					<tr>
+						<td style="padding:10px">
+						<style>
+							#orderDetail td{
+								padding:10px;
+							}
+							#orderDetail th{
+								padding:10px;
+								text-align:center;
+							}
+						</style>
+						<div style="padding:10px">
+						<table  border="solid 1px" style="width:100%;">
+						<tr>
+							<?php if(!empty($datas)){?>
+							<td style="padding:10px;text-align:center">您的信箱:&nbsp;&nbsp;&nbsp;<?php echo $datas[0]->email?></td>
+							<?php } else{ ?>
+							<td style="padding:10px;text-align:center">無訂單資料</td>
+							<?php }  ?>
+						</tr>
+						
+						</table>
+						</div>
+						<table id="orderDetail" border="solid 1px" style="width:100%">
+						
+							<tr>
+								<th>姓名</th>
+								<th>電話</th>
+								
+								<th>抵達日期</th>
+								<th>預訂區域</th>
+								<th>帳數</th>
+								<th>預訂天數</th>
+								<th>帳號後五碼</th>
+								<th>訂單建立時間</th>
+								<th>總價</th>
+								<th>狀態</th>
+							</tr>
+							<?php foreach($datas as $v){?>
+							<tr>
+								<td><?php echo $v->guest_name?></td>
+								<td style="text-align:right"><?php echo $v->phone?></td>
+								
+								<td><?php echo $v->year . "/" . $v->month . "/" . $v->day?></td>
+								<td><?php echo $v->name?></td>
+								<td style="text-align:right"><?php echo $v->booked?></td>
+								<td style="text-align:right"><?php echo $v->stayDays?></td>
+								<td style="text-align:center"><?php echo $v->bank_account?></td>
+								<td><?php echo date("Y-m-d H:i:s",(strtotime($v->createtime)+43200))?></td> 
+								<!-- <td><?php echo $v->createtime?></td> -->
+								<td style="text-align:right"><?php echo $v->price * $v->booked * $v->stayDays?></td>
+								<td><?php switch($v->status){
+											case 0:
+											echo "確認中";
+											break;
+											case 1:
+											echo "已確認付款";
+											break;
+											case 2:
+											echo "已逾期未付款";
+											break;
+											case 3:
+											echo "無空位";
+											break;
+										}
+								
+								?></td>
+							</tr>
+							<?php } ?>
+						</table>
+						</td>
+					<tr>
+					<tr>
+						<td style="padding:10px">
+						
+						</td>
+					<tr>
+					<tr>
+						<td style="padding:10px">
+						
+						<input type="button" value="回首頁" onclick="location.href='index.php'">
+						</td>
+					<tr>
+				</table>
+				</center>
+				
+				<div class="clearfix"> </div>
+			</div>
+			
+		</div>
+		
+	</div>
+
+</body>
+</html>
