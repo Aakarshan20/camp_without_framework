@@ -89,13 +89,7 @@ if(isset($_GET['aid']) && (!isset($_GET['id']))){
 		// print_r($areas);
 		
 		// print_r($areaDatas);
-<<<<<<< HEAD
-		$sql = "select id,year,month,day,name,booked,orders.aid from orders left join area ";
-		$sql .= " on area.aid=orders.aid where id = " . $_GET['id'];
-		$datas = array();
-		$datas = getAll($conn,$sql)[0];
-		// print_r($datas);
-=======
+
 		$table = (isset($_GET['table']) && $_GET['table']=="guestinfo")?"guestinfo":"orders";
 		$sql = "select id,year,month,day,name,booked,".$table.".aid,guest_name,phone,bank_account,status,stayDays from " . $table ." left join area ";
 		$sql .= " on area.aid=". $table .".aid where id = " . $_GET['id']  ;
@@ -107,7 +101,7 @@ if(isset($_GET['aid']) && (!isset($_GET['id']))){
 		//		[booked] => 5 [guest_name] => 王先生2 [phone] => 912133223
 		//	[bank_account] => 12345 [status] => 0 [createtime] => 2017-06-16 21:09:25 [is_delete] => 0 [stayDays] => 5 )
 		
->>>>>>> update
+
 		$msg = "";
 		// $
 	}

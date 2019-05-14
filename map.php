@@ -10,7 +10,6 @@ date_default_timezone_set('Asia/Taipei');
 $mysql = Mysql::get_instance();
 
 
-<<<<<<< HEAD
 $first_link_title = "回首頁";
 $first_link = "index.php";
 $second_link_title = "立即訂位";
@@ -36,9 +35,6 @@ if($conn){
 
 
 
-//設定首頁縮圖
-=======
->>>>>>> update
 $area_covers=array(
 "./view/images/a_cover.jpg","./view/images/b_cover.jpg","./view/images/c_cover.jpg","./view/images/d_cover.jpg",
 "./view/images/ian1_cover.jpg","./view/images/ian2_cover.jpg","./view/images/ian3_cover.jpg","./view/images/ian4_cover.jpg",);
@@ -67,15 +63,6 @@ function getAll($conn,$sql){
 //結束函式
 
 
-<<<<<<< HEAD
-
-// $sql = "set names utf8";
-
-// sqlexe($conn,$sql);
-
-
-=======
->>>>>>> update
 $ori_month = date("m");
 
 if(isset($_GET['m']) && is_numeric($_GET['m'])){
@@ -127,21 +114,10 @@ for($i=0;$i<$weekday;$i++){
 	array_unshift($calender," ");
 }
 
-<<<<<<< HEAD
-// echo '<br/>';
-// print_r($calender);
-while(isset($calender[6]) && (!$calender[6])){
-	$calender = array_slice($calender,7);
-}
-// echo '<br/>';
-// print_r($calender);
-=======
-
 while(isset($calender[6]) && (!$calender[6])){
 	$calender = array_slice($calender,7);
 }
 
->>>>>>> update
 
 
 
@@ -149,39 +125,14 @@ $sql = "select aid,name,available from area order by aid";
 
 $areas = $mysql->query($sql)->fetchAll();
 
-<<<<<<< HEAD
-// print_r($areas2);
-
-// $areas = getAll($conn,$sql);
-
-// echo "month : " . $month , "<br/>";
-
-// echo '<br/>';
-
-// print_r($areas);
-
-
-
-=======
->>>>>>> update
 
 // echo '<br/>';
 $sql = "select * from orders where year=" . $year . " and month=" . $month ;
 $sql .= " and day>=" . $day;
-<<<<<<< HEAD
-// $datas = getAll($conn,$sql);
-
-$datas=$mysql->query($sql)->fetchAll();
-
-
-// echo '<pre>';
- // print_r($datas);
-// echo '</pre>';
-=======
 
 
 $datas=$mysql->query($sql)->fetchAll();
->>>>>>> update
+
 
 $sql = "select day,sum(booked)as total from orders where month=" . 
 	$month. " and year=".$year ."  group by day";
@@ -197,12 +148,6 @@ foreach($areas as $v){
 	array_push($aid_arr,$v['aid']);
 	$total_avaliable += $v['available'];
 }
-<<<<<<< HEAD
-// print_r($aid_arr);
-// print_r($total_avaliable);
-=======
-
->>>>>>> update
 
 $full_days_arr = array();
 
@@ -224,22 +169,9 @@ for($i=0;$i<count($aid_arr);$i++){
 }
 
 
-<<<<<<< HEAD
 
-// echo "aid_datas_arr";
-// echo "<br/>aid datas arr<br/>";
-// echo "<pre>";
-// print_r($aid_datas_arr);
-// echo "</pre>";
-// echo $sa;
-include("./view/calender.html");
- include("./view/map.html");
-include("./view/footer.html");
-// include("./view/123123.html");
-=======
 include("./view/calender.html");
  include("./view/map.html");
 include("./view/footer.html");
 
->>>>>>> update
 ?>

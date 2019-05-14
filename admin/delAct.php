@@ -63,13 +63,6 @@ $id = $_GET['id'] +0;
 
 // echo $id;
 
-<<<<<<< HEAD
-
-$sql = "delete from orders where id=" .$id;
-
-$rs = sqlexe($conn,$sql);
-
-=======
 $table = (!isset($_GET['table']) )?"orders":$_GET['table'];
 
 $sql = "delete from " . $table ." where id=" .$id . " or parent_id=" .$id;
@@ -78,21 +71,21 @@ $rs = sqlexe($conn,$sql);
 
 // echo $sql;
 
->>>>>>> update
+
 if($rs){
 	$msg = "刪除成功";
 }else{
 	$msg = "刪除失敗";
 }
 
-<<<<<<< HEAD
-$sql = "select * from orders " ;
-$sql .= " left join area on area.aid=orders.aid order by day,name asc";
-=======
+
 $sql = "select * from  " . $table ;
 $sql .= " left join area on area.aid= " . $table . ".aid where parent_id=0 order by day,name asc";
 // echo $sql;
->>>>>>> update
+
+$sql = "select * from orders " ;
+$sql .= " left join area on area.aid=orders.aid order by day,name asc";
+
 $datas = getAll($conn,$sql);
 
 $status = "admin";

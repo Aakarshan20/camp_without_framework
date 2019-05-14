@@ -21,12 +21,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 function MM_openBrWindow(theURL,winName,features) { //v2.0
   window.open(theURL,winName,features);
 }
-<<<<<<< HEAD
-function recheck(id){　 
 
-if ( confirm ("確定刪除此筆資料? ") )
-     {　document.location.href="delAct.php?id=" + id}
-=======
 function recheck(id,table){　 
 	console.log(id,table);
 	if(table==0){
@@ -38,7 +33,7 @@ function recheck(id,table){　
 	
 if ( confirm ("確定刪除此筆資料? ") )
      {　document.location.href="delAct.php?id=" + suffix}
->>>>>>> update
+
 }
 </script>
 </head>
@@ -86,21 +81,6 @@ if ( confirm ("確定刪除此筆資料? ") )
 					</div><!-- /.navbar-collapse -->	
 				<!-- </nav> -->
 			<!-- </div> -->
-<<<<<<< HEAD
-			<div class="banner-info">
-			<?php if(isset($status)) { ?>
-				<font color="white">已登入資料<?php echo isset($msg)?": " .$msg : ""; echo empty($datas)?"(目前無資料)":"";	?></font>
-				<p><center>
-					<table border="solid" style="border-color:white" >
-						<tr>
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">年</th>
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">月</th>
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">日</th>
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">區域</th>
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">訂位數量</th>
-							<?php if($status=='admin'){ ?>
-							<th colspan="6"  style="padding:10px;vertical-align:middle;color:white">選項</th>
-=======
 			
 			<?php if(isset($status)) { ?>
 			<div  style="text-align:center;margin-left:90px;
@@ -156,29 +136,14 @@ if ( confirm ("確定刪除此筆資料? ") )
 							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white;text-align:center">建立時間</th>
 							<?php if($status=='admin'){ ?>
 							<th colspan="6"  style="text-align:center;padding:10px;vertical-align:middle;color:white">選項</th>
->>>>>>> update
+
 							<?php } ?>
 						</tr>
 						
 						<?php foreach($datas as $k=>$v){ ?>
 						<tr>
 							<?php $color = "white";?>
-<<<<<<< HEAD
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['year']?></th>
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['month']?></th>
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['day']?></th>
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['name']?></th>
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['booked']?></th>
-							
-							<?php if($status=='admin'){ ?>
-							
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:#96CDCD">
-								
-							<a href="editor.php?id=<?php echo $v['id']?>" title="開新視窗"  >編輯</a></th>
-						
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:#96CDCD">
-							<a href="#" title="開新視窗" onclick="recheck(<?php echo $v['id']?>)" >刪除</a></th>
-=======
+
 							<th colspan="3"  style="text-align:center;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['year']?></th>
 							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['month']?></th>
 							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['day']?></th>
@@ -217,41 +182,23 @@ if ( confirm ("確定刪除此筆資料? ") )
 							<th colspan="3"  style="text-align:center;padding:10px;vertical-align:middle;color:#96CDCD">
 							<!-- <a href="#" title="開新視窗" onclick="recheck(<?php echo $v['id']; echo ($v['table_type']==0)?'':"&table=guestinfo"?>)" >刪除</a></th> -->
 							<a href="#" title="開新視窗" onclick="recheck(<?php echo  $v['id']?>,<?php echo  $v['table_type'] ?>)" >刪除</a></th>
->>>>>>> update
 							<?php } ?>
 						</tr>
 							
 						<?php } ?>
 					
 					</table>
-<<<<<<< HEAD
 					</center>
 				</p>
 				<?php } ?>
 				<?php if(isset($areastatus)) { ?>
 				<font color="white">已登入資料<?php echo isset($msg)?": " .$msg : ""; echo empty($datas)?"(目前無資料)":"";	?></font>
-=======
-					
-				</p>
-				</div>
-				<?php } ?>
-				<?php if(isset($areastatus)) { ?>
-				<div  style="text-align:center;">
-				<div style="margin:20px">
-				<font color="white">已登入資料<?php echo isset($msg)?": " .$msg : ""; echo empty($datas)?"(目前無資料)":"";	?></font>
-				</div>
->>>>>>> update
 				<p><center>
 					<table border="solid" style="border-color:white" >
 						<tr>
 							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">序號</th>
 							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">名稱</th>
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">空位</th>
-<<<<<<< HEAD
-=======
-							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">價錢</th>
->>>>>>> update
-							
+							<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">空位</th>							
 							<?php if($areastatus=='admin'){ ?>
 							<th colspan="6"  style="padding:10px;vertical-align:middle;color:white">選項</th>
 							<?php } ?>
@@ -262,12 +209,8 @@ if ( confirm ("確定刪除此筆資料? ") )
 							<?php $color = "white";?>
 							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo ($k+1)?></th>
 							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['name']?></th>
-<<<<<<< HEAD
+
 							<th colspan="3"  style="padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['available']?></th>
-=======
-							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['available']?></th>
-							<th colspan="3"  style="text-align:right;padding:10px;vertical-align:middle;color:<?php echo $color;?>"><?php echo $v['price']?></th>
->>>>>>> update
 							
 							
 							<?php if($areastatus=='admin'){ ?>
@@ -286,12 +229,6 @@ if ( confirm ("確定刪除此筆資料? ") )
 					</table>
 					</center>
 				</p>
-<<<<<<< HEAD
-				<?php } ?>
-				<?php if(isset($editor)) { ?>
-				<font color="white">編輯<?php echo ($editor=='area')?"露營區":"訂位"?>資料</font>
-					
-=======
 				</div>
 				<?php } ?>
 				<?php if(isset($editor)) { ?>
@@ -300,7 +237,7 @@ if ( confirm ("確定刪除此筆資料? ") )
 				<font color="white">編輯<?php echo ($editor=='area')?"露營區":"訂位"?>資料</font>
 				</div>
 				</center>
->>>>>>> update
+
 					<?php if($editor=='area'){ ?>
 					<p><center>
 						<form action="editorAct.php?m=area" method="post">
@@ -322,18 +259,7 @@ if ( confirm ("確定刪除此筆資料? ") )
 									<input type ="text" value="<?php echo $areaDatas['available']?>"name = "available"/>
 								</th>
 							</tr>
-<<<<<<< HEAD
-=======
-							<tr>
-								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
-								價錢&nbsp;(&nbsp;請輸入大於零的數字&nbsp;)&nbsp;</th>
-							</tr>
-							<tr>
-								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
-									<input type ="text" value="<?php echo $areaDatas['price']?>"name = "price"/>
-								</th>
-							</tr>
->>>>>>> update
+
 							
 						</table>
 							<input type="hidden" name="aid" value="<?php echo $areaDatas['aid']?>">
@@ -481,11 +407,8 @@ if ( confirm ("確定刪除此筆資料? ") )
 							}
 							</script>
 						<center>
-<<<<<<< HEAD
+
 						<form name="order" action="editorAct.php?m=data" method="post">
-=======
-						<form name="order" action="editorAct.php?m=data<?php echo (isset($_GET['table']) && ($_GET['table']=="guestinfo"))?"&table=guestinfo":"";?>" method="post">
->>>>>>> update
 						<table name="table" border="solid" style="border-color:white" >
 							<tr>
 								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
@@ -547,87 +470,7 @@ if ( confirm ("確定刪除此筆資料? ") )
 									</center>
 								</th>
 							</tr>
-<<<<<<< HEAD
-=======
-							<tr>
-								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
-								<center>預約天數</center>
-								</th>
-							</tr>
-							<tr>
-								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
-									<input type ="text" value="<?php echo $datas['stayDays']?>"name="stayDays"/>
-								</th>
-							</tr>
-							<tr>
-								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
-								<center>顧客姓名</center>
-								</th>
-							</tr>
-							<tr>
-								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
-									<input type ="text" value="<?php echo $datas['guest_name']?>"name="guest_name"/>
-								</th>
-							</tr>
-							<tr>
-								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
-								<center>顧客聯絡電話</center>
-								</th>
-							</tr>
-							<tr>
-		
-								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
-									<input type ="text" value="<?php echo $datas['phone']?>"name="phone"/>
-								</th>
-							</tr>
-							<tr>
-								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
-								<center>銀行帳後後五碼</center>
-								</th>
-							</tr>
-							<tr>
-								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
-									<input type ="text" value="<?php echo $datas['bank_account']?>"name="bank_account"/>
-								</th>
-							</tr>
-							<tr>
-												
-		<!--[stayDays] => 5 )-->
-								<th colspan="3"  style="padding:10px;vertical-align:middle;color:white">
-								<center>狀態</center>
-								</th>
-							</tr>
-							<tr>
-								<th colspan="3"  style="padding:10px;vertical-align:middle;color:black">
-									<center>
-									<select  name="status" style="vertical-align:middle;width:130px;font-size:14px;" >
-									<<?php 
-									for($i=0;$i<=3;$i++){ ?>
-									<option value="<?php echo $i ?>"<?php echo ($i==$datas['status'])?"selected":''?>>
-										<?php switch($i){
-											case 0:
-											echo "確認中";
-											break;
-											case 1:
-											echo "已確認付款";
-											break;
-											case 2:
-											echo "已逾期未付款";
-											break;
-											case 3:
-											echo "無空位";
-											break;
-										}
-								
-								?>
-									</option>
-									<?php } ?>
-									</select>
-									<center>
-									
-								</th>
-							</tr>
->>>>>>> update
+
 							
 							
 						</table>
@@ -635,11 +478,6 @@ if ( confirm ("確定刪除此筆資料? ") )
 				changelist();
 				function changelist()
 				{
-<<<<<<< HEAD
-=======
-					  
-					  /*
->>>>>>> update
 					  switch(document.order.aid.value)
 					  {		
 							<?php foreach($areas as $v){ ?>
@@ -659,15 +497,9 @@ if ( confirm ("確定刪除此筆資料? ") )
 								break;
 							<?php } ?>
 					  }
-<<<<<<< HEAD
+
 				}                                                                                
-=======
-					  */
-				}
-					function $id(id){
-						return document.getElementById(id);
-					}
->>>>>>> update
+
 				</script>    
 								<br/>
 								<br/>
@@ -682,18 +514,8 @@ if ( confirm ("確定刪除此筆資料? ") )
 					<?php } ?>
 				<?php } ?>
 				<?php if(isset($login)){ ?>
-<<<<<<< HEAD
+
 				<font color="white">請輸入帳號密碼</font>
-					
-=======
-				<center>
-				<div style="margin-top:100px;margin-bottom:50px">
-				
-				<font color="white"><h4>請輸入帳號密碼</h4></font>
-				</center>
-				</div>
->>>>>>> update
-					
 					<p><center>
 						<form action="connect.php" method="post">
 						<table border="solid" style="border-color:white" >
@@ -724,12 +546,7 @@ if ( confirm ("確定刪除此筆資料? ") )
 						</form>
 						</center>
 					</p>
-<<<<<<< HEAD
-					<?php } ?>
-					<?php if(isset($chPasswd) && $chPasswd=='true'){ ?>
-				<font color="white">請輸入帳號、舊密碼與新密碼</font>
-					
-=======
+
 					
 					<?php } ?>
 					<?php if(isset($chPasswd) && $chPasswd=='true'){ ?>
@@ -739,7 +556,6 @@ if ( confirm ("確定刪除此筆資料? ") )
 				<font color="white">請輸入帳號、舊密碼與新密碼</font>
 					</div>
 					</center>
->>>>>>> update
 					<p><center>
 						<form action="connect.php" method="post">
 						<table border="solid" style="border-color:white" >
@@ -815,16 +631,10 @@ if ( confirm ("確定刪除此筆資料? ") )
 					</p>
 					<?php } ?>
 					<?php if(isset($bannerMsg)){ ?>
-<<<<<<< HEAD
+
 				<font color="white">提示訊息&nbsp;:&nbsp;<?php echo $bannerMsg?></font>
 					
-=======
-				<div style="margin:100px">
-				<center>
-				<font color="white"><h4>提示訊息&nbsp;:&nbsp;<?php echo $bannerMsg?></h4></font>
-				</center>
-				</div>
->>>>>>> update
+
 					<?php 	$bannerMsgUrl = isset($bannerMsgUrl)?$bannerMsgUrl:"index.php";
 							$buttonMsg = isset($buttonMsg)?$buttonMsg:"回管理頁面";
 					?>

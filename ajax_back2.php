@@ -1,11 +1,5 @@
 <?php 
-<<<<<<< HEAD
-header("Content-Type:text/html; charset=utf-8");
-date_default_timezone_set('Asia/Taipei');
-$year = date("Y");
-$month = $_GET['m'];
 
-=======
 defined('ACC')||exit();
 header("Content-Type:text/html; charset=utf-8");
 date_default_timezone_set('Asia/Taipei');
@@ -39,7 +33,6 @@ foreach($this_month_order as $v){
 }
 
 //
->>>>>>> update
 $myfile = fopen("calender.txt", "r") or die("Unable to open file!");
 $file_json =  fread($myfile,filesize("calender.txt"));
 
@@ -63,34 +56,7 @@ fclose($myfile);
 
 $day_of_month = cal_days_in_month(CAL_GREGORIAN,$month,$year);  
 for($i=$day;$i<=$day_of_month;$i++){
-<<<<<<< HEAD
-		$calender[$i]['day']=$i;
-		if(array_key_exists($i,$this_month_holiday)){
-			if (empty($this_month_holiday[$i]->name)){
-				if(($this_month_holiday[$i]->holidayCategory)=="星期六、星期日"){
-					$calender[$i]['color'] ="red";
-					// $calender[$i]['holidayCategory']="星期六、星期日";
-				}else{
-					if(($this_month_holiday[$i]->isHoliday)=="是"){
-						$calender[$i]['color'] ="red";
-						$calender[$i]['holidayCategory']=$this_month_holiday[$i]->holidayCategory;
-					}else{
-						$calender[$i]['color'] ="black";
-						$calender[$i]['holidayCategory']=$this_month_holiday[$i]->holidayCategory;
-					}
-				}
-			}else{
-				$calender[$i]['color'] ="red";
-				$calender[$i]['holidayCategory']=$this_month_holiday[$i]->name;
-			}
-		}else{
-			$calender[$i]['color'] ="black";
-		}
-}
 
-$weekday = date("w",mktime(0,0,0,$month,$day,$year));
-
-=======
 		$calender[$i-1]['day']=$i;
 		if(array_key_exists($i,$this_month_holiday)){
 			if (empty($this_month_holiday[$i]->name)){
@@ -132,8 +98,6 @@ foreach($full_days_of_this_month as $v){
 }
 
 
-
->>>>>>> update
 for($i=0;$i<$weekday;$i++){
 	$value = array();
 	$value['day'] = cal_days_in_month(CAL_GREGORIAN,($month-1),$year) -$i;
@@ -192,7 +156,7 @@ if($num_of_calender_array_before%7!=0){
 	<?php foreach($calender as $k=>$v){
 			$first_remainder_for_tr = ($weekday==0)?1:0;
 			$second_remainder_for_tr = ($weekday==0)?0:6;
-<<<<<<< HEAD
+
 			if($k%7 ==$first_remainder_for_tr){
 				echo "<tr>";
 			} 
@@ -205,7 +169,7 @@ if($num_of_calender_array_before%7!=0){
 			?>
 		</td>
 			<?php	if($k%7 ==$second_remainder_for_tr){
-=======
+
 			if($k%7 ==0){
 				echo "<tr>";
 			} 
@@ -222,7 +186,7 @@ if($num_of_calender_array_before%7!=0){
 			?>
 		</td>
 			<?php	if($k%7 ==6){
->>>>>>> update
+
 						echo "</tr>";
 					}
 			} ?>

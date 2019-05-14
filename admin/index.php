@@ -20,27 +20,7 @@ date_default_timezone_set('Asia/Taipei');
 
 //進出資料庫
 $conn = mysqli_connect($_CFG['host'],$_CFG['user'],$_CFG['passwd']);
-<<<<<<< HEAD
-// echo "connect";
-if($conn){
-	// echo " :success!<br/>";
-}else{
-	// echo " :fail!<br/>";
-}
-=======
 
->>>>>>> update
-
-
-function sqlexe($conn,$sql){
-	$rs = mysqli_query($conn,$sql);
-	if($rs){
-		// echo $sql ." :success!<br/>";
-	}else{
-		// echo $sql ." :fail!<br/>";
-	}
-	return $rs;
-}
 
 
 function getAll($conn,$sql){
@@ -58,7 +38,7 @@ $sql = "set names utf8";
 
 sqlexe($conn,$sql);
 
-<<<<<<< HEAD
+
 /*
 $ori_month = date("m");
 */
@@ -141,7 +121,7 @@ $sql = "select * from orders ";
 $sql .= " left join area on area.aid=orders.aid ";
 $sql .= " where orders.aid in(select aid from area) ";
 $sql .= " order by year,month,day,orders.aid asc;";
-=======
+
 
 
 $year = date("Y");
@@ -183,12 +163,8 @@ if(!isset($_GET['category']) || ($_GET['category']=="all")){
 	// echo $sql;
 }
 
->>>>>>> update
 $datas = getAll($conn,$sql);
 
-
-
-<<<<<<< HEAD
 
 //echo '<pre>';
  // print_r($datas);
@@ -232,19 +208,14 @@ for($i=0;$i<count($aid_arr);$i++){
  // echo $areas[0]['available'];
  $status = 'admin';
  // print_r($areas);
-=======
- $status = 'admin';
+
  
->>>>>>> update
+
 
 include("../view/header_admin.html");
 include("../view/index_admin.html");
 include("../view/footer_admin.html");
-<<<<<<< HEAD
-// echo "admin";
-=======
 
->>>>>>> update
 }
 
 ?>

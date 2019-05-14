@@ -24,23 +24,23 @@ date_default_timezone_set('Asia/Taipei');
 // print_r($_POST);
 
 $_POST['available'] +=0;
-<<<<<<< HEAD
 
-=======
+
+
 $_POST['price']+=0;
-print_r($_POST);
->>>>>>> update
+
+
+
+
 //進出資料庫
 $conn = mysqli_connect($_CFG['host'],$_CFG['user'],$_CFG['passwd']);
 // echo "connect";
 if($conn){
-	// echo " :success!<br/>";
+	
 }else{
-<<<<<<< HEAD
+
 	echo " :fail!<br/>";
-=======
-	// echo " :fail!<br/>";
->>>>>>> update
+>>>>>>> 2ef6ed96ca8bf393507b6e5cd939354f456564fc
 }
 
 
@@ -71,7 +71,7 @@ sqlexe($conn,$sql);
 $sql = "set names utf8";
 
 sqlexe($conn,$sql);
-<<<<<<< HEAD
+
 if(!is_int($_POST['available']) || ($_POST['available']<=0)){
 	$msg = " 新增失敗，請輸入正確的數字";
 	$areastatus = 'view';
@@ -80,7 +80,7 @@ if(!is_int($_POST['available']) || ($_POST['available']<=0)){
 
 	$sql = "insert into area (name,available)values('" . $_POST['name'] . "','" . $_POST['available'] . "')";
 
-=======
+
 if(empty($_POST['name'])){
 	$msg = " 新增失敗，名稱為空白";
 	$areastatus = 'view';
@@ -91,9 +91,7 @@ if(empty($_POST['name'])){
 }else{
 
 	$sql = "insert into area (name,available,price)values('" . $_POST['name'] . "','" . $_POST['available'] ."','". $_POST['price'] .  "')";
-		// echo $sql;
-		// exit();
->>>>>>> update
+
 	$areastatus = 'view';
 	$rs = sqlexe($conn,$sql);
 

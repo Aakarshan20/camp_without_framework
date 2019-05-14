@@ -9,15 +9,12 @@ date_default_timezone_set('Asia/Taipei');
 // exit();
 $mysql = Mysql::get_instance();
 
-<<<<<<< HEAD
-
 $first_link_title = "行車動線";
 $first_link = "map.php";
 $second_link_title = "立即訂位";
 $second_link = "order.php";
 
-=======
->>>>>>> update
+
 //設定首頁縮圖
 $area_covers=array(
 "./view/images/a_cover.jpg","./view/images/b_cover.jpg","./view/images/c_cover.jpg","./view/images/d_cover.jpg",
@@ -111,23 +108,14 @@ while(isset($calender[6]) && (!$calender[6])){
 
 
 
-<<<<<<< HEAD
-$sql = "select aid,name,available from area order by aid";
-
-$areas = $mysql->query($sql)->fetchAll();
-
-
-
-=======
 $sql = "select aid,name,available,price from area order by aid";
 
 $areas = $mysql->query($sql)->fetchAll();
 
->>>>>>> update
-// echo '<br/>';
+
 $sql = "select * from orders where year=" . $year . " and month=" . $month ;
 $sql .= " and day>=" . $day;
-// $datas = getAll($conn,$sql);
+
 
 $datas=$mysql->query($sql)->fetchAll();
 
@@ -137,15 +125,10 @@ $datas=$mysql->query($sql)->fetchAll();
 // echo '</pre>';
 
 $sql = "select day,sum(booked)as total from orders where month=" . 
-<<<<<<< HEAD
+
 	$month. " and year=".$year ."  group by day";
 // $sum_of_each_day_arr = getAll($conn,$sql);
 
-=======
-$month. " and year=".$year ."  group by day";
-// $sum_of_each_day_arr = getAll($conn,$sql);
-// echo $sql;
->>>>>>> update
 $sum_of_each_day_arr = $mysql->fetchAll($sql);
 	
 // print_r($sum_of_each_day_arr);
@@ -156,13 +139,6 @@ foreach($areas as $v){
 	array_push($aid_arr,$v['aid']);
 	$total_avaliable += $v['available'];
 }
-<<<<<<< HEAD
-// print_r($aid_arr);
-// print_r($total_avaliable);
-=======
- //print_r($aid_arr);
- //print_r($total_avaliable);
->>>>>>> update
 
 $full_days_arr = array();
 

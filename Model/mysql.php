@@ -30,8 +30,7 @@ class Mysql{
 	public function fetchAll($sql){
 		return self::$db->query($sql)->fetchAll();
 	}
-<<<<<<< HEAD
-=======
+
 	public function prepare($sql){
 		return self::$db->prepare($sql);
 	}
@@ -39,7 +38,7 @@ class Mysql{
 		return self::$db->lastInsertId();
 	}
 	
->>>>>>> update
+
 }
 
 ?>

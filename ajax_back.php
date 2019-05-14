@@ -1,11 +1,5 @@
 <?php 
-<<<<<<< HEAD
-header("Content-Type:text/html; charset=utf-8");
-date_default_timezone_set('Asia/Taipei');
-$year = date("Y");
-$month = $_GET['m'];
 
-=======
 define('ACC',true);
 header("Content-Type:text/html; charset=utf-8");
 date_default_timezone_set('Asia/Taipei');
@@ -38,8 +32,8 @@ foreach($this_month_order as $v){
 	}
 }
 
-//
->>>>>>> update
+
+
 $myfile = fopen("calender.txt", "r") or die("Unable to open file!");
 $file_json =  fread($myfile,filesize("calender.txt"));
 
@@ -63,29 +57,7 @@ fclose($myfile);
 
 $day_of_month = cal_days_in_month(CAL_GREGORIAN,$month,$year);  
 for($i=$day;$i<=$day_of_month;$i++){
-<<<<<<< HEAD
-		$calender[$i]['day']=$i;
-		if(array_key_exists($i,$this_month_holiday)){
-			if (empty($this_month_holiday[$i]->name)){
-				if(($this_month_holiday[$i]->holidayCategory)=="星期六、星期日"){
-					$calender[$i]['color'] ="red";
-					// $calender[$i]['holidayCategory']="星期六、星期日";
-				}else{
-					if(($this_month_holiday[$i]->isHoliday)=="是"){
-						$calender[$i]['color'] ="red";
-						$calender[$i]['holidayCategory']=$this_month_holiday[$i]->holidayCategory;
-					}else{
-						$calender[$i]['color'] ="black";
-						$calender[$i]['holidayCategory']=$this_month_holiday[$i]->holidayCategory;
-					}
-				}
-			}else{
-				$calender[$i]['color'] ="red";
-				$calender[$i]['holidayCategory']=$this_month_holiday[$i]->name;
-			}
-		}else{
-			$calender[$i]['color'] ="black";
-=======
+
 		$calender[$i-1]['day']=$i;
 		if(array_key_exists($i,$this_month_holiday)){
 			if (empty($this_month_holiday[$i]->name)){
@@ -107,7 +79,7 @@ for($i=$day;$i<=$day_of_month;$i++){
 			}
 		}else{
 			$calender[$i-1]['color'] ="black";
->>>>>>> update
+
 		}
 }
 if($day!=1){
@@ -121,19 +93,17 @@ if($day!=1){
 	
 }
 
-<<<<<<< HEAD
 
 
-$weekday = date("w",mktime(0,0,0,$month,1,$year));
 
 
-=======
+
+
 $weekday = date("w",mktime(0,0,0,$month,1,$year));
 
 foreach($full_days_of_this_month as $v){
 	$calender[($v->day)-1]['isFull'] = '<font color="red">(滿)</font>';
 }
->>>>>>> update
 
 for($i=0;$i<$weekday;$i++){
 	$value = array();
@@ -193,24 +163,14 @@ if($num_of_calender_array_before%7!=0){
 	<?php foreach($calender as $k=>$v){
 			$first_remainder_for_tr = ($weekday==0)?1:0;
 			$second_remainder_for_tr = ($weekday==0)?0:6;
-<<<<<<< HEAD
+
 			if($k%7 ==$first_remainder_for_tr){
-=======
-			if($k%7 ==0){
->>>>>>> update
+
 				echo "<tr>";
 			} 
 			$id = (isset($v['day']))?$year . '/' . $month . '/' .  $v['day']:'';
 			$id = (isset($v['another_month']))?"":$id;
 	?>
-<<<<<<< HEAD
-		<td id="<?php echo $id;?>"style="padding:5px;text-align:center;;width:14.28%;text-align:center;color:<?php echo $v['color']?>" onclick="insertArrive(this)">
-			<?php echo isset($v['day'])?$v['day']:'';
-					echo (isset($v['holidayCategory']))?"</br>" . $v['holidayCategory']:'';
-			?>
-		</td>
-			<?php	if($k%7 ==$second_remainder_for_tr){
-=======
 		<td id="<?php 	echo $id;?>"style="padding:5px;text-align:center;;width:14.28%;text-align:center;
 		color:		<?php 	echo $v['color']?>" onclick="insertArrive(this)"
 		<?php echo isset($v['isFull'])?'class="full"':''?>
@@ -221,7 +181,7 @@ if($num_of_calender_array_before%7!=0){
 			?>
 		</td>
 			<?php	if($k%7 ==6){
->>>>>>> update
+
 						echo "</tr>";
 					}
 			} ?>
@@ -229,7 +189,3 @@ if($num_of_calender_array_before%7!=0){
 </table>
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> update

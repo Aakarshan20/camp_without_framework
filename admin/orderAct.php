@@ -23,11 +23,8 @@ $conn = mysqli_connect($_CFG['host'],$_CFG['user'],$_CFG['passwd']);
 if($conn){
 	// echo " :success!<br/>";
 }else{
-<<<<<<< HEAD
 	echo " :fail!<br/>";
-=======
-	// echo " :fail!<br/>";
->>>>>>> update
+
 }
 
 
@@ -60,7 +57,7 @@ $sql = "set names utf8";
 
 sqlexe($conn,$sql);
 
-<<<<<<< HEAD
+
 $sql = "select count(*)as count from orders where year=" . $_POST['year'] . " and month=" . 
 $_POST['month'] . " and day=" .$_POST['day'] ." and aid=" . $_POST['aid'];
 
@@ -70,27 +67,6 @@ $exist = getAll($conn,$sql)[0]['count'];
 // print_r($exist);
 
 
-if($exist==0){
-	$sql = "insert into orders (year,month,day,aid,booked)values(".
-	$_POST['year'].",".$_POST['month'].",".$_POST['day'].",".$_POST['aid'].",".
-	$_POST['booked'].")";
-}else{
-	$sql = "update orders set booked=" . $_POST['booked'] ." where year=" 
-	. $_POST['year'] . " and month=" . $_POST['month'] . " and day=" 
-	.$_POST['day'] ." and aid=" . $_POST['aid'];
-}
-
-// echo $sql;
-
-$rs = sqlexe($conn,$sql);
-
-if($rs){
-	$msg ="資料新增成功";
-}else{
-	$msg ="資料新增失敗";
-}
-
-=======
 
 	$sql = "insert into orders (year,month,day,aid,booked,guest_name,phone,bank_account,stayDays)values(".
 	$_POST['year'].",".$_POST['month'].",".$_POST['day'].",".$_POST['aid'].",".
@@ -165,19 +141,13 @@ if($_POST['stayDays']>1){//多於一天開始循環添加
 
 
 
->>>>>>> update
-
 $status="order";
 $sql = "delete from orders where aid not in (select aid from area)";
 		sqlexe($conn,$sql);
 
-<<<<<<< HEAD
+
 $sql = "select year,month,day,name,booked from orders left join area on ";
 $sql .=" area.aid=orders.aid order by year,month,day,orders.aid";
-=======
-$sql = "select year,month,day,name,booked,guest_name,phone,bank_account,status,orders.createtime,stayDays,price from orders left join area on ";
-$sql .=" area.aid=orders.aid where parent_id=0 order by year,month,day,orders.aid ";
->>>>>>> update
 $datas =getAll($conn,$sql);
 
 include("../view/header_admin.html");

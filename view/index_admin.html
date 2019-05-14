@@ -166,11 +166,9 @@ if ( confirm ("確定刪除此筆資料? ") )
 							</script>
 							<form name="order" action="orderAct.php" method="post">
 								<h4>預約年份:&nbsp;
-<<<<<<< HEAD
+
 								<select name="year" style="width:119px;font-size:14px;" onChange="onChangeColumn1();">
-=======
-								<select id="orderYear" name="year" style="width:119px;font-size:14px;" onChange="onChangeColumn1();">
->>>>>>> update
+
 									<option value="<?php echo $year?>"><?php echo $year?></option>
 									<option value="<?php echo ($year+1)?>"><?php echo ($year+1)?></option>
 									<!-- <option value="<?php echo ($year+2)?>"><?php echo ($year+2)?></option> -->
@@ -178,39 +176,27 @@ if ( confirm ("確定刪除此筆資料? ") )
 								</h4>
 								<br/>
 								<h4>預約月份:&nbsp;
-<<<<<<< HEAD
-								<select name="month" style="width:119px;font-size:14px;" onChange="onChangeColumn2();">
-									<<?php 
-									for($i=1;$i<=12;$i++){ ?>
-									<option value="<?php echo $i?>"><?php echo $i?></option>
-=======
+
 								<select id="orderMonth" name="month" style="width:119px;font-size:14px;" onChange="onChangeColumn2();">
 									<<?php 
 									for($i=1;$i<=12;$i++){ ?>
 									<option value="<?php echo $i ?>"<?php echo ($i==date("m"))?"selected":''?>><?php echo $i?></option>
->>>>>>> update
+
 									<?php } ?>
 								</select>
 								</h4>
 								<br/>
 								<h4>預約日期:&nbsp;
-<<<<<<< HEAD
-								<select name="day" style="width:119px;font-size:14px;" onChange="onChangeColumn3();">
-									<?php 
-									for($i=1;$i<=31;$i++){ ?>
-									<option value="<?php echo $i?>"><?php echo $i?></option>
-=======
 								<select id="orderDay" name="day" style="width:119px;font-size:14px;" onChange="onChangeColumn3();">
 									<?php 
 									for($i=1;$i<=31;$i++){ ?>
 									<option value="<?php echo $i?>" <?php echo ($i==date("d"))?'selected':'';?>><?php echo $i?></option>
->>>>>>> update
+
 									<?php } ?>
 								</select>
 								</h4>
 								<br/>
 				<script language=javascript>
-<<<<<<< HEAD
 				changelist();
 				function changelist()
 				{
@@ -238,7 +224,7 @@ if ( confirm ("確定刪除此筆資料? ") )
 								<h4>預約區域:&nbsp;
 								
 								<select name="aid" style="width:119px;font-size:14px;" 
-=======
+
 				//changelist();
 				function getXmlHttpObject(){
 					var xmlHttpRequest;
@@ -313,7 +299,6 @@ if ( confirm ("確定刪除此筆資料? ") )
 								<h4>預約區域:&nbsp;
 								
 								<select id="orderAid" name="aid" style="width:119px;font-size:14px;" 
->>>>>>> update
 									onChange=Javascript:changelist();>
 									<option value="0"selected>請選擇區域</option>
 									<?php foreach($areas as $v){ ?>
@@ -322,12 +307,6 @@ if ( confirm ("確定刪除此筆資料? ") )
 								</select>
 								<br/>
 								<br/>
-<<<<<<< HEAD
-								<div id=namelist>預定數量:&nbsp;</div>
-
-								</h4>
-								
-=======
 								<div id="namelist">預定數量:&nbsp;</div>
 
 								</h4>
@@ -351,10 +330,6 @@ if ( confirm ("確定刪除此筆資料? ") )
 								<h4>銀行帳號:&nbsp;
 								<input type = "text" name="bank_account" style="width: 120px;height:25px;" />
 								</h4>
-								
-								
->>>>>>> update
-								
 								<br/>
 								<input type="submit" value="送出" >
 							</form>
@@ -377,39 +352,26 @@ if ( confirm ("確定刪除此筆資料? ") )
 					
 					<br/>
 					<tr>
-<<<<<<< HEAD
-							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">序號</th>
-							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">名稱</th>
-							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">數量</th>
-							<th colspan="6"  style="padding:5px;vertical-align:middle;color:black">選項</th>
-=======
+
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:center">序號</th>
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:center">名稱</th>
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:center">數量</th>
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:center">價錢</th>
-							<th colspan="6"  style="padding:5px;vertical-align:middle;color:black;text-align:center">選項</th>
->>>>>>> update
-							
+							<th colspan="6"  style="padding:5px;vertical-align:middle;color:black;text-align:center">選項</th>							
 						</tr>
 						<?php foreach($areas as $k =>$v){ ?>
 						<tr>
-<<<<<<< HEAD
+
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black"><?php echo ($k+1)?></th>
-=======
-							<th colspan="3"  style="padding:5px;vertical-align:middle;text-align:right;color:black"><?php echo ($k+1)?></th>
->>>>>>> update
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">
 								<?php mb_internal_encoding("UTF-8");
 									$addition = (mb_strlen($v['name'], "utf-8")>10)?"...":" ";
 									echo (mb_strlen($v['name'], "utf-8")<7)?$v['name']:mb_substr($v['name'], 0,5)."<br/>".mb_substr($v['name'], 5,5).$addition;
 								?>
 							</th>
-<<<<<<< HEAD
-							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black"><?php echo $v['available']?></th>
-=======
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:right"><?php echo $v['available']?></th>
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:right"><?php echo $v['price']?></th>
->>>>>>> update
+
 							<th colspan="6"  style="padding:5px;vertical-align:middle;color:black">
 							<a href="editor.php?aid=<?php echo $v['aid']?>" >編輯</a>
 							</th>
@@ -439,13 +401,11 @@ if ( confirm ("確定刪除此筆資料? ") )
 						<br/>
 						<p><input type = "text" name="available"  style="width: 200px;"/></h4></p>
 						<br/>
-<<<<<<< HEAD
-=======
 						<p><h4>價錢:&nbsp;</h4></p>
 						<br/>
 						<p><input type = "text" name="price" style="width: 200px;" /></p>
 						<br/>
->>>>>>> update
+
 						<input type="submit" value="送出" >
 					</form>
 					</div>
@@ -459,39 +419,26 @@ if ( confirm ("確定刪除此筆資料? ") )
 					<h2><font style="color:red">刪除</font>露營區資料</h2>
 					<br/>
 					<tr>
-<<<<<<< HEAD
-							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">序號</th>
-							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">名稱</th>
-							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">數量</th>
-							<th colspan="6"  style="padding:5px;vertical-align:middle;color:black">選項</th>
-=======
+
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:center">序號</th>
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:center">名稱</th>
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:center">數量</th>
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:center">價錢</th>
 							<th colspan="6"  style="padding:5px;vertical-align:middle;color:black;text-align:center">選項</th>
->>>>>>> update
 							
 						</tr>
 						<?php foreach($areas as $k =>$v){ ?>
 						<tr>
-<<<<<<< HEAD
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black"><?php echo ($k+1)?></th>
-=======
-							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:right"><?php echo ($k+1)?></th>
->>>>>>> update
+
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black">
 								<?php mb_internal_encoding("UTF-8");
 									$addition = (mb_strlen($v['name'], "utf-8")>10)?"...":" ";
 									echo (mb_strlen($v['name'], "utf-8")<7)?$v['name']:mb_substr($v['name'], 0,5)."<br/>".mb_substr($v['name'], 5,5).$addition;
 								?>
 							</th>
-<<<<<<< HEAD
 							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black"><?php echo $v['available']?></th>
-=======
-							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:right"><?php echo $v['available']?></th>
-							<th colspan="3"  style="padding:5px;vertical-align:middle;color:black;text-align:right"><?php echo $v['price']?></th>
->>>>>>> update
+
 							<th colspan="6"  style="padding:5px;vertical-align:middle;color:black">
 							<a href="#" title="開新視窗" onclick="recheckaid(<?php echo $v['aid']?>)" >刪除</a>
 							</th>

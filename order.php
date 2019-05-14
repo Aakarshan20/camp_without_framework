@@ -2,22 +2,18 @@
 
 
 define('ACC',true);
-<<<<<<< HEAD
-
-=======
 include('./Model/mysql.php');
->>>>>>> update
 include('./include/config.ini.php');
 include('./include/init.inc.php');
 header("Content-Type:text/html; charset=utf-8");
 date_default_timezone_set('Asia/Taipei');
 
-<<<<<<< HEAD
+
 $first_link_title = "回首頁";
 $first_link = "index.php";
 $second_link_title = "行車動線";
 $second_link = "map.php";
-=======
+
 $mysql = mysql::get_instance();
 $month = date("m");
 // $month=7;
@@ -72,11 +68,8 @@ foreach($this_month_order as $v){
 }
 	
 
-// print_r($full_days_of_this_month);
-// exit();
 
 
->>>>>>> update
 $myfile = fopen("calender.txt", "r") or die("Unable to open file!");
 $file_json =  fread($myfile,filesize("calender.txt"));
 
@@ -85,17 +78,14 @@ $holiday_calender = json_decode($file_json)->result->records;
 
 $this_month_holiday = array();
 
-<<<<<<< HEAD
+
 $year = date("Y");
 $month = date("m");
 // $month=10;
 
 
 
-=======
-// $month=10;
 
->>>>>>> update
 foreach($holiday_calender as $v){
 	if((substr($v->date,0,4) == $year) && (substr($v->date,5,(strrpos($v->date,'/')-5))==$month)){
 		$this_month_holiday[substr($v->date,(strrpos($v->date,'/')+1))] = $v;
@@ -111,29 +101,7 @@ $day_of_month = cal_days_in_month(CAL_GREGORIAN,$month,$year);
 $calender = array();
 for($i=$day;$i<=$day_of_month;$i++){
 		
-<<<<<<< HEAD
-		$calender[$i]['day']=$i;
-		if(array_key_exists($i,$this_month_holiday)){
-			if (empty($this_month_holiday[$i]->name)){
-				if(($this_month_holiday[$i]->holidayCategory)=="星期六、星期日"){
-					$calender[$i]['color'] ="red";
-					// $calender[$i]['holidayCategory']="星期六、星期日";
-				}else{
-					if(($this_month_holiday[$i]->isHoliday)=="是"){
-						$calender[$i]['color'] ="red";
-						$calender[$i]['holidayCategory']=$this_month_holiday[$i]->holidayCategory;
-					}else{
-						$calender[$i]['color'] ="black";
-						$calender[$i]['holidayCategory']=$this_month_holiday[$i]->holidayCategory;
-					}
-				}
-			}else{
-				$calender[$i]['color'] ="red";
-				$calender[$i]['holidayCategory']=$this_month_holiday[$i]->name;
-			}
-		}else{
-			$calender[$i]['color'] ="black";
-=======
+
 		$calender[$i-1]['day']=$i;
 		if(array_key_exists($i,$this_month_holiday)){
 			if (empty($this_month_holiday[$i]->name)){
@@ -155,7 +123,6 @@ for($i=$day;$i<=$day_of_month;$i++){
 			}
 		}else{
 			$calender[$i-1]['color'] ="black";
->>>>>>> update
 		}
 }
 
@@ -175,9 +142,8 @@ if($day!=1){
 }
 
 
-<<<<<<< HEAD
-for($j=1;$j<=$weekday;$j++){
-=======
+
+
 foreach($full_days_of_this_month as $v){
 	$calender[($v->day)-1]['isFull'] = '<font color="red">(滿)</font>';
 }
@@ -185,6 +151,9 @@ foreach($full_days_of_this_month as $v){
 
 for($j=0;$j<$weekday;$j++){
 >>>>>>> update
+=======
+for($j=1;$j<=$weekday;$j++){
+>>>>>>> 2ef6ed96ca8bf393507b6e5cd939354f456564fc
 	$value = array();
 	$value['day'] = cal_days_in_month(CAL_GREGORIAN,($month-1),$year) -$j;
 	$value['color'] = "#B0C4DE";
@@ -209,16 +178,14 @@ if($num_of_calender_array_before%7!=0){
 }
 
 
-// print_r($calender);
-// exit();
-<<<<<<< HEAD
-include("./view/calender.html");
- include("./view/order.html");
-include("./view/footer.html");
-=======
+
 //include("./view/calender.html");
  include("./view/order.html");
 include("./view/footer.html");
 
->>>>>>> update
+
+include("./view/calender.html");
+ include("./view/order.html");
+include("./view/footer.html");
+
 ?>

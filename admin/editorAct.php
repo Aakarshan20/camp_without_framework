@@ -27,10 +27,9 @@ if(isset($_GET['m'])){
 	if($_GET['m']=='area'){
 		$mode='area';
 		$_POST['available'] +=0;
-<<<<<<< HEAD
-=======
+
 		$_POST['price'] +=0;
->>>>>>> update
+
 	}else if($_GET['m']=='data'){
 		$mode='data';
 		$_POST['booked'] +=0;
@@ -83,20 +82,8 @@ sqlexe($conn,$sql);
 switch($mode){
 	case "area":
 	// print_r($_POST);
-<<<<<<< HEAD
-	if(!is_int($_POST['available']) || ($_POST['available']<=0)){
-		$msg = "編輯失敗，請輸入正確的數字" . $_POST['available'];
-		$areastatus='view';
-		$sql ="select * from area";
-		$datas = array();
-		$datas = getAll($conn,$sql);
-	}else{
 
-		$sql = "update area set name = '" . $_POST['name'] . "',available='";
-		$sql .= $_POST['available'] . "' where aid='" . $_POST['aid'] . "'";
-		// echo $sql;
-		// exit();
-=======
+
 	if(!is_int($_POST['available']) || ($_POST['available']<=0) ||!is_int($_POST['price']) || ($_POST['price']<=0)){
 		$msg = "編輯失敗，請輸入正確的數字";
 		$areastatus='view';
@@ -107,10 +94,7 @@ switch($mode){
 		
 		$sql = "update area set name = '" . $_POST['name'] . "',available=";
 		$sql .= $_POST['available'] . ",price=" . $_POST['price'] . " where aid='" . $_POST['aid'] . "'";
-		// 
-		// exit();
-		// echo $sql;
->>>>>>> update
+		
 		$rs = sqlexe($conn,$sql);
 		if($rs){
 			$msg = "編輯成功";
@@ -123,53 +107,7 @@ switch($mode){
 		$datas = getAll($conn,$sql);
 	}
 	break;
-	case "data":
-<<<<<<< HEAD
-	// print_r($_POST);
-	
-	if(!is_numeric($_POST['year']) || ($_POST['year']<=0)||($_POST['year']>2100)){
-		$msg = "編輯失敗，請輸入正確的年份: 您輸入了" . $_POST['year'];
-		$areastatus='view';
-		$sql ="select * from area";
-		$datas = array();
-		$datas = getAll($conn,$sql);
-	}else if(!is_numeric($_POST['month']) || ($_POST['month']<=0) || ($_POST['month']>12)){
-		$msg = "編輯失敗，請輸入正確的月份: 您輸入了" . $_POST['month'];
-		$areastatus='view';
-		$sql ="select * from area";
-		$datas = array();
-		$datas = getAll($conn,$sql);
-		
-	}else if(!is_numeric($_POST['day']) || ($_POST['day']<=0) || ($_POST['day']>31)){
-		$msg = "編輯失敗，請輸入正確的日期: 您輸入了" . $_POST['day'];
-		$areastatus='view';
-		$sql ="select * from area";
-		$datas = array();
-		$datas = getAll($conn,$sql);
-	}else if(!is_numeric($_POST['booked']) || ($_POST['booked']<=0)){
-		$msg = "編輯失敗，請輸入正確的數字" . $_POST['booked'];
-		$areastatus='view';
-		$sql ="select * from area";
-		$datas = array();
-		$datas = getAll($conn,$sql);
-	}else if($_POST['day'] > cal_days_in_month(CAL_GREGORIAN, $_POST['month'], $_POST['year'])){
-		$msg = "編輯失敗，請輸入正確的日期: 您輸入了" . 
-		$_POST['year'] . "年 " . $_POST['month'] . "月 " . $_POST['day'] . "日";
-		$areastatus='view';
-		$sql ="select * from area";
-		$datas = array();
-		$datas = getAll($conn,$sql);
-	}else{
-		$sql = "update orders set year = '" . $_POST['year'] . "',month='";
-		$sql .= $_POST['month'] . "',day='" . $_POST['day'] ."',aid='";
-		$sql .= $_POST['aid'] . "' ,booked='". $_POST['booked'] ."' where id='" . $_POST['id'] . "'";
-		
-		// echo $sql;
-		// exit();
-		$rs = sqlexe($conn,$sql);
-=======
-	// exit();
-	
+	case "data":	
 	$sql = "select available from area where aid=" . $_POST['aid'];
 	
 	$available = getAll($conn,$sql)[0]['available'];
@@ -269,7 +207,7 @@ switch($mode){
 		$datas = getAll($conn,$sql);
 		$sql = "delete from " . $table ." where aid not in (select aid from area)";
 		sqlexe($conn,$sql);
-}else if((($_POST['booked'])>$available) || empty($_POST['booked']) || !is_numeric(($_POST['booked'])) || !is_int(($_POST['booked']))){
+	}else if((($_POST['booked'])>$available) || empty($_POST['booked']) || !is_numeric(($_POST['booked'])) || !is_int(($_POST['booked']))){
 		$msg = "編輯失敗，預訂位置";
 		if($_POST['booked']>$available ||  $_POST['booked']<0){
 			$msg.="數量錯誤(大於露營區數量)";
@@ -390,27 +328,21 @@ switch($mode){
 				
 			}
 			// exit();
->>>>>>> update
+
 		if($rs){
 			$msg = "編輯成功";
 		}else{
 			$msg = "編輯失敗";
 		}
 		$status='view';
-<<<<<<< HEAD
-		$sql ="select year,month,day,name,booked from orders ";
-		$sql .= " left join area on area.aid=orders.aid order by year,month,day,orders.aid";
-		$datas = array();
-		$datas = getAll($conn,$sql);
-		$sql = "delete from orders where aid not in (select aid from area)";
-=======
+
 		$sql ="select year,month,day,name,booked,guest_name,phone,bank_account,status,price,stayDays," . $table . ".createtime from  " . $table;
 		$sql .= " left join area on area.aid=" . $table . ".aid  where parent_id=0 order by year,month,day," . $table  	.".aid";
 		// echo $sql;
 		$datas = array();
 		$datas = getAll($conn,$sql);
 		$sql = "delete from ". $table ." where aid not in (select aid from area)";
->>>>>>> update
+
 		sqlexe($conn,$sql);
 	}
 	break;
@@ -419,16 +351,7 @@ switch($mode){
 }
 
 
-<<<<<<< HEAD
-// $sql = "select * from area";
-// $sql = "select * from orders " ;
-// $sql .= " left join area on area.aid=orders.aid order by day,name asc";
-// $datas = getAll($conn,$sql);
 
-// $status = "area";
-=======
-
->>>>>>> update
 
 include('../view/header_admin.html');
 include('../view/message_admin.html');

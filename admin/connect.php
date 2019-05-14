@@ -13,14 +13,9 @@ while($rows = mysqli_fetch_assoc($rs)){
 	$tables[]=$rows;
 }
 
-<<<<<<< HEAD
-$id = $_POST['id'];
-$pw = $_POST['pw'];
-=======
 $id = empty($_POST['id'])?"":trim($_POST['id']);
 $pw = empty($_POST['pw'])?"":trim($_POST['pw']);
 
->>>>>>> update
 
 $chPasswd = array_key_exists('new_pw',$_POST)?'true':'false';
 

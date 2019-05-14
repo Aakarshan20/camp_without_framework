@@ -50,12 +50,8 @@ $area_banners=array(
 "./view/images/ian3_banner.jpg",
 "./view/images/ian4_banner.jpg");
 
-$area_photos_large = array();
-<<<<<<< HEAD
+
 $area_photos_large[] = array(//area a
-=======
-$area_photos_large[] = array(//area a大圖
->>>>>>> update
 "./view/images/photos/a/1.JPG",
 "./view/images/photos/a/2.JPG",
 "./view/images/photos/a/3.JPG",
@@ -113,7 +109,6 @@ $area_photos_large[] = array(//area b
 "./view/images/photos/b/12.JPG",
 "./view/images/photos/b/13.JPG",
 "./view/images/photos/b/14.JPG",
-<<<<<<< HEAD
 "./view/images/photos/b/15.JPG",
 
 );
@@ -226,9 +221,6 @@ $area_photos_large[] = array(//area ian 4
 "./view/images/photos/ian/4/11.JPG",
 "./view/images/photos/ian/4/12.JPG",
 "./view/images/photos/ian/4/13.JPG",
-=======
-
-
 );
 $area_photos_large[] = array(//area c
 "./view/images/photos/c/1.JPG",
@@ -339,18 +331,10 @@ $area_photos_large[] = array(//area ian 4
 "./view/images/photos/ian/4/11.jpg",
 "./view/images/photos/ian/4/12.jpg",
 "./view/images/photos/ian/4/13.jpg",
->>>>>>> update
 
 );
 
-
-$area_photos= array();
-
-<<<<<<< HEAD
 $area_photos[] = array(//area a
-=======
-$area_photos[] = array(//area 小圖
->>>>>>> update
 "./view/images/a/1.jpg",
 "./view/images/a/2.jpg",
 "./view/images/a/3.jpg",
@@ -407,11 +391,8 @@ $area_photos[] = array(//area b
 "./view/images/b/12.jpg",
 "./view/images/b/13.jpg",
 "./view/images/b/14.jpg",
-<<<<<<< HEAD
 "./view/images/b/15.jpg",
-=======
-
->>>>>>> update
+"./view/images/b/15.jpg",
 );
 
 $area_photos[] = array(//area c
@@ -521,10 +502,7 @@ $area_photos[] = array(//area ian 4
 "./view/images/ian/4/10.jpg",
 "./view/images/ian/4/11.jpg",
 "./view/images/ian/4/12.jpg",
-<<<<<<< HEAD
-=======
-//"./view/images/ian/4/13.jpg",
->>>>>>> update
+
 
 );
 
