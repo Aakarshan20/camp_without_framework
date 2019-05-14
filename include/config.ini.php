@@ -9,13 +9,13 @@ $_CFG['user'] = 'b14_20045506';
 $_CFG['passwd'] = 'camp168ing777';
 $_CFG['char'] = 'utf8';//
 */
-
+/*
 $_CFG= array();
 $_CFG['host'] = 'localhost';
 $_CFG['db'] = 'camp';
 $_CFG['user'] = 'hisql0726';
 $_CFG['passwd'] = 'hisql0726sqlhi';
 $_CFG['char'] = 'utf8';
-
+*/
 
 ?>
